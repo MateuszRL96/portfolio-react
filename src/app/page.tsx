@@ -1,11 +1,11 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { gsap, useGSAP } from '../utils/gsap';
 import CodePreview from '@/components/CodePreview';
-import { FaShoppingCart, FaUtensils, FaChartBar } from 'react-icons/fa';
+import { FaShoppingCart, FaUtensils, FaChartBar, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { 
   FaReact, 
   FaNodeJs, 
@@ -25,7 +25,7 @@ interface Project {
   id: string;
   title: string;
   description: string;
-  image: string;
+  icon: string;
   category: string[];
   technologies: string[];
   demoLink: string;
@@ -96,34 +96,74 @@ export default function Home() {
 
   const projects: Project[] = [
     {
-      id: 'beans-more',
-      title: 'Beans & More',
-      description: 'Sklep internetowy z kawą premium i akcesoriami baristycznymi.',
-      image: 'https://placehold.co/600x400/indigo/white?text=Beans+%26+More',
-      category: ['e-commerce', 'web'],
-      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      demoLink: 'https://beans-more.com',
-      caseStudyLink: '/portfolio/beans-more'
+      id: 'banking-app',
+      title: 'Aplikacja Bankowa JavaFX',
+      description: 'Aplikacja bankowa z interfejsem graficznym zbudowana w JavaFX. Zawiera podstawowe funkcjonalności bankowe oraz bazę danych SQLite.',
+      icon: '🏦',
+      category: ['aplikacje', 'desktop'],
+      technologies: ['Java', 'JavaFX', 'SQLite', 'CSS'],
+      demoLink: 'https://github.com/MateuszRL96/AplikacjaBankowaJavaFX1',
+      caseStudyLink: '/portfolio/banking-app'
     },
     {
-      id: 'nonnas-kitchen',
-      title: "Nonna's Kitchen",
-      description: 'Strona restauracji z systemem rezerwacji online.',
-      image: 'https://placehold.co/600x400/indigo/white?text=Nonna%27s+Kitchen',
-      category: ['web', 'booking'],
-      technologies: ['Vue.js', 'Firebase', 'Google Maps API'],
-      demoLink: 'https://nonnas-kitchen.com',
-      caseStudyLink: '/portfolio/nonnas-kitchen'
+      id: 'qualification-manager',
+      title: 'Qualification Manager',
+      description: 'System zarządzania i rekomendacji kwalifikacji zawodowych. Wykorzystuje uczenie maszynowe do sugerowania kwalifikacji.',
+      icon: '🎓',
+      category: ['web', 'ai'],
+      technologies: ['Java', 'Spring Boot', 'PostgreSQL', 'Docker'],
+      demoLink: 'https://github.com/MateuszRL96/QualificationManager',
+      caseStudyLink: '/portfolio/qualification-manager'
     },
     {
-      id: 'analytics-dashboard',
-      title: 'Analytics Dashboard',
-      description: 'Panel analityczny z zaawansowaną wizualizacją danych.',
-      image: 'https://placehold.co/600x400/indigo/white?text=Analytics+Dashboard',
-      category: ['web', 'data'],
-      technologies: ['React', 'D3.js', 'Node.js', 'PostgreSQL'],
-      demoLink: 'https://analytics-dashboard.com',
-      caseStudyLink: '/portfolio/analytics-dashboard'
+      id: 'projekt-atomow',
+      title: 'Model Elektronu',
+      description: 'Interaktywny model elektronu stworzony przy użyciu Three.js. Projekt edukacyjny prezentujący wizualizację 3D modelu atomowego.',
+      icon: '⚛️',
+      category: ['web', '3d'],
+      technologies: ['JavaScript', 'Three.js', 'HTML', 'CSS'],
+      demoLink: 'https://github.com/MateuszRL96/ProjektAtomow',
+      caseStudyLink: '/portfolio/projekt-atomow'
+    },
+    {
+      id: 'qualification-recommendation',
+      title: 'Qualification Recommendation',
+      description: 'System rekomendacji kwalifikacji wykorzystujący algorytmy uczenia maszynowego.',
+      icon: '🤖',
+      category: ['ai', 'web'],
+      technologies: ['Python', 'TensorFlow', 'Flask', 'PostgreSQL'],
+      demoLink: 'https://github.com/MateuszRL96/qulificationRecomendation',
+      caseStudyLink: '/portfolio/qualification-recommendation'
+    },
+    {
+      id: 'books-manager',
+      title: 'Books Manager',
+      description: 'Aplikacja do zarządzania kolekcją książek z możliwością kategoryzacji i oceniania.',
+      icon: '📚',
+      category: ['web', 'aplikacje'],
+      technologies: ['React', 'Node.js', 'MongoDB', 'Express'],
+      demoLink: 'https://github.com/MateuszRL96/Books',
+      caseStudyLink: '/portfolio/books-manager'
+    },
+    {
+      id: 'projekt-fruits',
+      title: 'Fruits Shop',
+      description: 'Sklep internetowy z owocami i warzywami, oferujący system zamówień online.',
+      icon: '🍎',
+      category: ['web', 'e-commerce'],
+      technologies: ['React', 'Redux', 'Node.js', 'MongoDB'],
+      demoLink: 'https://github.com/MateuszRL96/ProjektFruits',
+      caseStudyLink: '/portfolio/projekt-fruits'
+    },
+    {
+      id: 'javafx-calculator',
+      title: 'JavaFX Calculator',
+      description: 'Zaawansowany kalkulator z interfejsem graficznym stworzony w JavaFX.',
+      icon: '🧮',
+      category: ['aplikacje', 'desktop'],
+      technologies: ['Java', 'JavaFX', 'CSS'],
+      demoLink: 'https://github.com/MateuszRL96/JavaFXCalculator',
+      caseStudyLink: '/portfolio/javafx-calculator'
     }
   ];
 
@@ -137,6 +177,16 @@ export default function Home() {
     { name: 'Docker', icon: '🐳' },
     { name: 'Figma', icon: '🎨' }
   ];
+
+  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+
+  const nextProject = () => {
+    setCurrentProjectIndex((prev) => (prev + 1) % projects.length);
+  };
+
+  const prevProject = () => {
+    setCurrentProjectIndex((prev) => (prev - 1 + projects.length) % projects.length);
+  };
 
   return (
     <div ref={containerRef}>
@@ -401,83 +451,93 @@ export default function Home() {
             Moje najnowsze projekty i case studies
           </p>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                id: 'beans-more',
-                title: 'Beans & More',
-                description: 'Sklep internetowy z kawą premium i akcesoriami baristycznymi.',
-                icon: <FaShoppingCart className="text-6xl text-white" />,
-                technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-                demoLink: 'https://beans-more.com',
-                caseStudyLink: '/portfolio/beans-more'
-              },
-              {
-                id: 'nonnas-kitchen',
-                title: "Nonna's Kitchen",
-                description: 'Strona restauracji z systemem rezerwacji online.',
-                icon: <FaUtensils className="text-6xl text-white" />,
-                technologies: ['Vue.js', 'Firebase', 'Google Maps API'],
-                demoLink: 'https://nonnas-kitchen.com',
-                caseStudyLink: '/portfolio/nonnas-kitchen'
-              },
-              {
-                id: 'analytics-dashboard',
-                title: 'Analytics Dashboard',
-                description: 'Panel analityczny z zaawansowaną wizualizacją danych.',
-                icon: <FaChartBar className="text-6xl text-white" />,
-                technologies: ['React', 'D3.js', 'Node.js', 'PostgreSQL'],
-                demoLink: 'https://analytics-dashboard.com',
-                caseStudyLink: '/portfolio/analytics-dashboard'
-              }
-            ].map((project) => (
-              <div
-                key={project.id}
-                className="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-all border border-gray-100 group"
-              >
-                <div className="h-48 bg-gradient-to-br from-sky-400 to-blue-500 flex items-center justify-center">
-                  <div className="transform group-hover:scale-110 transition-transform duration-300">
-                    {project.icon}
+          <div className="relative">
+            <div className="flex overflow-hidden">
+              <div className="flex transition-transform duration-500" style={{ transform: `translateX(-${currentProjectIndex * 33.333}%)` }}>
+                {projects.map((project) => (
+                  <div
+                    key={project.id}
+                    className="w-1/3 flex-shrink-0 px-4"
+                  >
+                    <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-all border border-gray-100 group h-full">
+                      <div className="h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                        <div className="text-7xl transform group-hover:scale-110 transition-transform duration-300">
+                          {project.icon}
+                        </div>
+                      </div>
+                      <div className="p-6">
+                        <h3 className="text-xl font-bold mb-2 text-gray-900">{project.title}</h3>
+                        <p className="text-gray-600 mb-4">{project.description}</p>
+                        <div className="flex flex-wrap gap-2 mb-6">
+                          {project.technologies.map((tech, index) => (
+                            <span
+                              key={index}
+                              className="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                        <div className="flex gap-4">
+                          <a
+                            href={project.demoLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-center py-2 rounded-lg font-medium hover:shadow-lg transition-all"
+                          >
+                            Zobacz projekt
+                          </a>
+                          <Link
+                            href={project.caseStudyLink}
+                            className="flex-1 border-2 border-gray-200 text-gray-600 text-center py-2 rounded-lg font-medium hover:border-blue-500 hover:text-blue-500 transition-all"
+                          >
+                            Szczegóły
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2 text-gray-900">{project.title}</h3>
-                  <p className="text-gray-600 mb-4">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.technologies.map((tech, index) => (
-                      <span
-                        key={index}
-                        className="bg-sky-50 text-sky-600 px-3 py-1 rounded-full text-sm"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex gap-4">
-                    <a
-                      href={project.demoLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 bg-gradient-to-r from-sky-400 to-blue-500 text-white text-center py-2 rounded-lg font-medium hover:shadow-lg transition-all"
-                    >
-                      Demo na żywo
-                    </a>
-                    <Link
-                      href={project.caseStudyLink}
-                      className="flex-1 border-2 border-gray-200 text-gray-600 text-center py-2 rounded-lg font-medium hover:border-sky-500 hover:text-sky-500 transition-all"
-                    >
-                      Case Study
-                    </Link>
-                  </div>
-                </div>
+                ))}
               </div>
-            ))}
+            </div>
+
+            {/* Navigation Buttons */}
+            <button
+              onClick={prevProject}
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 bg-white p-3 rounded-full shadow-lg hover:bg-gray-50 transition-colors z-10"
+              aria-label="Poprzedni projekt"
+            >
+              <FaChevronLeft className="w-6 h-6 text-gray-600" />
+            </button>
+            <button
+              onClick={nextProject}
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 bg-white p-3 rounded-full shadow-lg hover:bg-gray-50 transition-colors z-10"
+              aria-label="Następny projekt"
+            >
+              <FaChevronRight className="w-6 h-6 text-gray-600" />
+            </button>
+
+            {/* Dots */}
+            <div className="flex justify-center mt-8 gap-2">
+              {projects.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentProjectIndex(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    currentProjectIndex === index
+                      ? 'bg-blue-500 w-6'
+                      : 'bg-gray-300 hover:bg-gray-400'
+                  }`}
+                  aria-label={`Przejdź do projektu ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
 
           <div className="text-center mt-12">
             <Link
               href="/portfolio"
-              className="inline-block bg-white text-emerald-500 px-8 py-3 rounded-full font-medium border-2 border-emerald-500 hover:bg-emerald-50 transition-all"
+              className="inline-block bg-white text-blue-500 px-8 py-3 rounded-full font-medium border-2 border-blue-500 hover:bg-blue-50 transition-all"
             >
               Zobacz więcej projektów
             </Link>

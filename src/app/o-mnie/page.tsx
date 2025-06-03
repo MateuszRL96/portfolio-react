@@ -1,9 +1,24 @@
 'use client';
 
-import { useRef } from 'react';
+import { useState, useRef } from 'react';
 import { gsap, useGSAP } from '../../utils/gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
+import { 
+  FaReact, FaNodeJs, FaJava, FaDocker, FaGitAlt, FaHtml5, FaCss3Alt, FaAngular,
+  FaDatabase, FaAws, FaLinux, FaNpm, FaPython, FaWindows, FaServer, FaShieldAlt,
+  FaNetworkWired, FaMicrosoft, FaUserShield, FaLock, FaCloud
+} from 'react-icons/fa';
+import { 
+  SiTypescript, SiSpring, SiNextdotjs, SiPostgresql, SiMongodb, SiExpress,
+  SiTailwindcss, SiRedux, SiJavascript, SiJunit5, SiThreedotjs, SiMysql,
+  SiOracle, SiTensorflow, SiPytorch, SiScikitlearn,
+  SiKubernetes, SiJenkins, SiGrafana, SiPrometheus, SiSelenium, SiCypress,
+  SiPostman, SiWireshark, SiKalilinux, SiFirebase, SiRedis, SiMariadb,
+  SiApachekafka, SiRabbitmq, SiSonarqube, SiVmware, SiAnsible, SiTerraform
+} from 'react-icons/si';
+import { TbBrandCSharp } from 'react-icons/tb';
+import type { ReactNode } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -27,6 +42,12 @@ interface TimelineItem {
   description: string;
   technologies?: string[];
   icon?: string;
+}
+
+interface TechStack {
+  name: string;
+  icon: ReactNode;
+  category: 'frontend' | 'backend' | 'database' | 'devops' | 'testing' | 'ai' | 'security' | 'it' | 'messaging';
 }
 
 const skills: Skill[] = [
@@ -81,11 +102,19 @@ const experience: Experience[] = [
 const timeline: TimelineItem[] = [
   {
     date: '2025',
-    title: 'Junior Backend Developer',
+    title: 'IT Specialist',
     company: 'Consbridge Chemicals',
-    description: 'Praca jako informatyk, specjalista IT, odnośnie systemów ERP, WMS, oprogramowania, instalacji itp.',
-    technologies: ['ERP', 'WMS', 'IT Infrastructure'],
+    description: 'Praca na stanowisku specjalisty IT, odpowiedzialnego za zarządzanie systemami ERP, WMS oraz infrastrukturą IT. Zajmuję się administracją, wdrażaniem i utrzymaniem systemów informatycznych oraz wsparciem technicznym użytkowników.',
+    technologies: ['ERP', 'WMS', 'IT Infrastructure', 'System Administration', 'Technical Support'],
     icon: '💼'
+  },
+  {
+    date: '2025-obecnie',
+    title: 'Magister Cyberbezpieczeństwa',
+    company: 'UITM Rzeszów',
+    description: 'Studia magisterskie na kierunku Cyberbezpieczeństwo, gdzie zgłębiam zaawansowane aspekty bezpieczeństwa systemów informatycznych, sieci i infrastruktury IT. Koncentruję się na praktycznych aspektach cyberbezpieczeństwa, analizie zagrożeń oraz projektowaniu bezpiecznych systemów.',
+    technologies: ['Cyberbezpieczeństwo', 'Bezpieczeństwo Sieci', 'Kryptografia', 'Analiza Zagrożeń', 'Informatyka Śledcza', 'Zarządzanie Bezpieczeństwem'],
+    icon: '🎓'
   },
   {
     date: '2024',
@@ -113,12 +142,86 @@ const timeline: TimelineItem[] = [
   },
   {
     date: '2021-2025',
-    title: 'Studia Programistyczne',
-    company: 'UITM Rzeszów (Informatyka - Inżynier)',
-    description: 'Studia inżynierskie z zakresu informatyki, z naciskiem na programowanie backendowe (Java Spring Boot), frontendowe (Angular), bazy danych (PostgreSQL) i nowoczesne technologie webowe.',
-    technologies: ['Java', 'Angular', 'PostgreSQL', 'Web Development'],
-    icon: '🎓'
+    title: 'Inżynier Informatyki',
+    company: 'UITM Rzeszów',
+    description: 'Ukończone studia inżynierskie na kierunku Informatyka, gdzie zdobyłem solidne podstawy programowania i projektowania systemów. Specjalizowałem się w technologiach backendowych (Java, Spring Boot) oraz frontendowych (Angular), realizując szereg praktycznych projektów.',
+    technologies: ['Java', 'Spring Boot', 'Angular', 'Programowanie Obiektowe', 'Bazy Danych', 'Architektura Systemów'],
+    icon: '👨‍🎓'
   }
+];
+
+const techStack: TechStack[] = [
+  // Frontend
+  { name: 'React', icon: <FaReact className="w-12 h-12" />, category: 'frontend' },
+  { name: 'Angular', icon: <FaAngular className="w-12 h-12" />, category: 'frontend' },
+  { name: 'Next.js', icon: <SiNextdotjs className="w-12 h-12" />, category: 'frontend' },
+  { name: 'TypeScript', icon: <SiTypescript className="w-12 h-12" />, category: 'frontend' },
+  { name: 'JavaScript', icon: <SiJavascript className="w-12 h-12" />, category: 'frontend' },
+  { name: 'Redux', icon: <SiRedux className="w-12 h-12" />, category: 'frontend' },
+  { name: 'Tailwind CSS', icon: <SiTailwindcss className="w-12 h-12" />, category: 'frontend' },
+  { name: 'Three.js', icon: <SiThreedotjs className="w-12 h-12" />, category: 'frontend' },
+  { name: 'HTML5', icon: <FaHtml5 className="w-12 h-12" />, category: 'frontend' },
+  { name: 'CSS3', icon: <FaCss3Alt className="w-12 h-12" />, category: 'frontend' },
+  
+  // Backend
+  { name: 'Node.js', icon: <FaNodeJs className="w-12 h-12" />, category: 'backend' },
+  { name: 'Express', icon: <SiExpress className="w-12 h-12" />, category: 'backend' },
+  { name: 'Java', icon: <FaJava className="w-12 h-12" />, category: 'backend' },
+  { name: 'Spring Boot', icon: <SiSpring className="w-12 h-12" />, category: 'backend' },
+  { name: 'C#', icon: <TbBrandCSharp className="w-12 h-12" />, category: 'backend' },
+  { name: 'Python', icon: <FaPython className="w-12 h-12" />, category: 'backend' },
+  { name: 'Firebase', icon: <SiFirebase className="w-12 h-12" />, category: 'backend' },
+  
+  // Database
+  { name: 'PostgreSQL', icon: <SiPostgresql className="w-12 h-12" />, category: 'database' },
+  { name: 'MongoDB', icon: <SiMongodb className="w-12 h-12" />, category: 'database' },
+  { name: 'MySQL', icon: <SiMysql className="w-12 h-12" />, category: 'database' },
+  { name: 'Oracle', icon: <SiOracle className="w-12 h-12" />, category: 'database' },
+  { name: 'Redis', icon: <SiRedis className="w-12 h-12" />, category: 'database' },
+  { name: 'MariaDB', icon: <SiMariadb className="w-12 h-12" />, category: 'database' },
+  
+  // DevOps & Tools
+  { name: 'Docker', icon: <FaDocker className="w-12 h-12" />, category: 'devops' },
+  { name: 'Kubernetes', icon: <SiKubernetes className="w-12 h-12" />, category: 'devops' },
+  { name: 'Git', icon: <FaGitAlt className="w-12 h-12" />, category: 'devops' },
+  { name: 'AWS', icon: <FaAws className="w-12 h-12" />, category: 'devops' },
+  { name: 'Azure', icon: <FaCloud className="w-12 h-12" />, category: 'devops' },
+  { name: 'Jenkins', icon: <SiJenkins className="w-12 h-12" />, category: 'devops' },
+  { name: 'Grafana', icon: <SiGrafana className="w-12 h-12" />, category: 'devops' },
+  { name: 'Prometheus', icon: <SiPrometheus className="w-12 h-12" />, category: 'devops' },
+  
+  // Testing
+  { name: 'JUnit', icon: <SiJunit5 className="w-12 h-12" />, category: 'testing' },
+  { name: 'Selenium', icon: <SiSelenium className="w-12 h-12" />, category: 'testing' },
+  { name: 'Cypress', icon: <SiCypress className="w-12 h-12" />, category: 'testing' },
+  { name: 'Postman', icon: <SiPostman className="w-12 h-12" />, category: 'testing' },
+  { name: 'SonarQube', icon: <SiSonarqube className="w-12 h-12" />, category: 'testing' },
+
+  // AI & Machine Learning
+  { name: 'TensorFlow', icon: <SiTensorflow className="w-12 h-12" />, category: 'ai' },
+  { name: 'PyTorch', icon: <SiPytorch className="w-12 h-12" />, category: 'ai' },
+  { name: 'Scikit-learn', icon: <SiScikitlearn className="w-12 h-12" />, category: 'ai' },
+
+  // IT Administration
+  { name: 'Linux', icon: <FaLinux className="w-12 h-12" />, category: 'it' },
+  { name: 'Windows Server', icon: <FaWindows className="w-12 h-12" />, category: 'it' },
+  { name: 'VMware', icon: <SiVmware className="w-12 h-12" />, category: 'it' },
+  { name: 'Microsoft 365', icon: <FaMicrosoft className="w-12 h-12" />, category: 'it' },
+  { name: 'Ansible', icon: <SiAnsible className="w-12 h-12" />, category: 'it' },
+  { name: 'Terraform', icon: <SiTerraform className="w-12 h-12" />, category: 'it' },
+  { name: 'Server Admin', icon: <FaServer className="w-12 h-12" />, category: 'it' },
+  { name: 'Networking', icon: <FaNetworkWired className="w-12 h-12" />, category: 'it' },
+
+  // Cybersecurity
+  { name: 'Network Security', icon: <FaShieldAlt className="w-12 h-12" />, category: 'security' },
+  { name: 'Kali Linux', icon: <SiKalilinux className="w-12 h-12" />, category: 'security' },
+  { name: 'Wireshark', icon: <SiWireshark className="w-12 h-12" />, category: 'security' },
+  { name: 'Identity & Access', icon: <FaUserShield className="w-12 h-12" />, category: 'security' },
+  { name: 'Encryption', icon: <FaLock className="w-12 h-12" />, category: 'security' },
+
+  // Message Brokers
+  { name: 'Kafka', icon: <SiApachekafka className="w-12 h-12" />, category: 'messaging' },
+  { name: 'RabbitMQ', icon: <SiRabbitmq className="w-12 h-12" />, category: 'messaging' }
 ];
 
 export default function About() {
@@ -194,6 +297,25 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center">
             <h1 className="text-4xl font-bold mb-6 fade-in text-white drop-shadow-md">O mnie</h1>
+            <div className="max-w-3xl mx-auto">
+              <p className="text-xl text-white/90 mb-8 fade-in">
+                Specjalista IT z pasją do cyberbezpieczeństwa i programowania. Łączę wiedzę techniczną z praktycznym doświadczeniem w zarządzaniu systemami i infrastrukturą IT.
+              </p>
+              <div className="flex justify-center gap-6 fade-in">
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-4">
+                  <div className="text-white/90 text-sm mb-1">Obecna rola</div>
+                  <div className="text-white font-semibold">IT Specialist @ Consbridge Chemicals</div>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-4">
+                  <div className="text-white/90 text-sm mb-1">Edukacja</div>
+                  <div className="text-white font-semibold">Magister Cyberbezpieczeństwa</div>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-4">
+                  <div className="text-white/90 text-sm mb-1">Specjalizacja</div>
+                  <div className="text-white font-semibold">Bezpieczeństwo IT & Rozwój Systemów</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -207,32 +329,29 @@ export default function About() {
               <h2 className="text-3xl font-bold mb-6">Cześć, jestem Mateusz!</h2>
               <div className="space-y-6 text-gray-600">
                 <p>
-                  Jestem front-end developerem z ponad 5-letnim doświadczeniem w tworzeniu nowoczesnych stron internetowych i aplikacji webowych. 
-                  Moją pasją jest przekształcanie pomysłów w funkcjonalne, piękne i intuicyjne rozwiązania cyfrowe.
+                  Jestem specjalistą IT z silnym zapleczem w zakresie cyberbezpieczeństwa i programowania. Obecnie pracuję jako IT Specialist w Consbridge Chemicals, gdzie zajmuję się zarządzaniem systemami ERP, WMS oraz infrastrukturą IT. Równolegle kontynuuję edukację na studiach magisterskich z cyberbezpieczeństwa, rozwijając swoje umiejętności w zakresie bezpieczeństwa systemów i sieci.
                 </p>
                 <p>
-                  Specjalizuję się w technologiach takich jak React, Vue.js, JavaScript oraz wszystkim co związane z user experience. 
-                  Wierzę, że dobry kod to nie tylko ten, który działa, ale także ten, który jest czytelny, skalowalny i łatwy w utrzymaniu.
+                  Moja ścieżka zawodowa łączy doświadczenie w programowaniu (głównie Java, Spring Boot, Angular) z wiedzą z zakresu administracji systemami i cyberbezpieczeństwa. Ukończyłem studia inżynierskie z informatyki, gdzie zdobyłem solidne podstawy programistyczne, a obecnie poszerzam swoją wiedzę w kierunku bezpieczeństwa IT.
                 </p>
                 <p>
-                  Gdy nie koduję, lubię czytać o nowych technologiach, uprawiać sport i spędzać czas z rodziną. 
-                  Uwielbiam też podróżować i poznawać nowe kultury - to często inspiruje mnie do kreatywnych rozwiązań w pracy.
+                  Poza pracą zawodową, aktywnie rozwijam się w obszarze nowych technologii, szczególnie interesują mnie zagadnienia związane z bezpieczeństwem sieciowym, automatyzacją infrastruktury i rozwiązaniami chmurowymi. W wolnym czasie lubię zgłębiać nowe narzędzia i technologie, które mogą usprawnić procesy w IT.
                 </p>
               </div>
 
               {/* Stats */}
               <div className="grid grid-cols-3 gap-8 mt-12">
                 <div className="text-center">
-                  <div className="text-4xl font-bold text-blue-600 mb-2">50+</div>
-                  <div className="text-gray-600">Projektów</div>
+                  <div className="text-4xl font-bold text-blue-600 mb-2">15+</div>
+                  <div className="text-gray-600">Projektów IT</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-4xl font-bold text-blue-600 mb-2">5+</div>
-                  <div className="text-gray-600">Lat doświadczenia</div>
+                  <div className="text-4xl font-bold text-blue-600 mb-2">2+</div>
+                  <div className="text-gray-600">Lata doświadczenia</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-4xl font-bold text-blue-600 mb-2">30+</div>
-                  <div className="text-gray-600">Zadowolonych klientów</div>
+                  <div className="text-4xl font-bold text-blue-600 mb-2">10+</div>
+                  <div className="text-gray-600">Certyfikatów</div>
                 </div>
               </div>
             </div>
@@ -252,22 +371,166 @@ export default function About() {
 
         {/* Sekcja Umiejętności */}
         <div className="mb-24 skills-section">
-          <h2 className="text-3xl font-bold text-center mb-12 fade-in">Umiejętności</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {skills.map((skill) => (
-              <div key={skill.name} className="fade-in">
-                <div className="flex justify-between mb-2">
-                  <span className="font-medium">{skill.name}</span>
-                  <span className="text-gray-600">{skill.level}%</span>
-                </div>
-                <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
+          <h2 className="text-3xl font-bold text-center mb-12 fade-in">Stack Technologiczny</h2>
+          
+          {/* Frontend */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-semibold mb-8 text-center text-blue-600">Frontend</h3>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+              {techStack
+                .filter(tech => tech.category === 'frontend')
+                .map((tech, index) => (
                   <div
-                    className="skill-bar h-full bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-full"
-                    style={{ width: `${skill.level}%` }}
-                  />
-                </div>
-              </div>
-            ))}
+                    key={index}
+                    className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group"
+                  >
+                    <div className="text-gray-600 group-hover:text-blue-500 transition-colors duration-300">
+                      {tech.icon}
+                    </div>
+                    <span className="mt-4 font-medium text-gray-800">{tech.name}</span>
+                  </div>
+                ))}
+            </div>
+          </div>
+
+          {/* Backend */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-semibold mb-8 text-center text-blue-600">Backend</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {techStack
+                .filter(tech => tech.category === 'backend')
+                .map((tech, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group"
+                  >
+                    <div className="text-gray-600 group-hover:text-blue-500 transition-colors duration-300">
+                      {tech.icon}
+                    </div>
+                    <span className="mt-4 font-medium text-gray-800">{tech.name}</span>
+                  </div>
+                ))}
+            </div>
+          </div>
+
+          {/* Databases & Messaging */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-semibold mb-8 text-center text-blue-600">Bazy Danych & Messaging</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {techStack
+                .filter(tech => tech.category === 'database' || tech.category === 'messaging')
+                .map((tech, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group"
+                  >
+                    <div className="text-gray-600 group-hover:text-blue-500 transition-colors duration-300">
+                      {tech.icon}
+                    </div>
+                    <span className="mt-4 font-medium text-gray-800">{tech.name}</span>
+                  </div>
+                ))}
+            </div>
+          </div>
+
+          {/* DevOps & Tools */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-semibold mb-8 text-center text-blue-600">DevOps & Narzędzia</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {techStack
+                .filter(tech => tech.category === 'devops')
+                .map((tech, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group"
+                  >
+                    <div className="text-gray-600 group-hover:text-blue-500 transition-colors duration-300">
+                      {tech.icon}
+                    </div>
+                    <span className="mt-4 font-medium text-gray-800">{tech.name}</span>
+                  </div>
+                ))}
+            </div>
+          </div>
+
+          {/* Testing */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-semibold mb-8 text-center text-blue-600">Testing & Quality</h3>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+              {techStack
+                .filter(tech => tech.category === 'testing')
+                .map((tech, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group"
+                  >
+                    <div className="text-gray-600 group-hover:text-blue-500 transition-colors duration-300">
+                      {tech.icon}
+                    </div>
+                    <span className="mt-4 font-medium text-gray-800">{tech.name}</span>
+                  </div>
+                ))}
+            </div>
+          </div>
+
+          {/* AI & Machine Learning */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-semibold mb-8 text-center text-blue-600">AI & Machine Learning</h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+              {techStack
+                .filter(tech => tech.category === 'ai')
+                .map((tech, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group"
+                  >
+                    <div className="text-gray-600 group-hover:text-blue-500 transition-colors duration-300">
+                      {tech.icon}
+                    </div>
+                    <span className="mt-4 font-medium text-gray-800">{tech.name}</span>
+                  </div>
+                ))}
+            </div>
+          </div>
+
+          {/* IT Administration */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-semibold mb-8 text-center text-blue-600">Administracja IT</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {techStack
+                .filter(tech => tech.category === 'it')
+                .map((tech, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group"
+                  >
+                    <div className="text-gray-600 group-hover:text-blue-500 transition-colors duration-300">
+                      {tech.icon}
+                    </div>
+                    <span className="mt-4 font-medium text-gray-800">{tech.name}</span>
+                  </div>
+                ))}
+            </div>
+          </div>
+
+          {/* Cybersecurity */}
+          <div>
+            <h3 className="text-2xl font-semibold mb-8 text-center text-blue-600">Cyberbezpieczeństwo</h3>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+              {techStack
+                .filter(tech => tech.category === 'security')
+                .map((tech, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group"
+                  >
+                    <div className="text-gray-600 group-hover:text-blue-500 transition-colors duration-300">
+                      {tech.icon}
+                    </div>
+                    <span className="mt-4 font-medium text-gray-800">{tech.name}</span>
+                  </div>
+                ))}
+            </div>
           </div>
         </div>
 
@@ -300,7 +563,7 @@ export default function About() {
             <h2 className="text-3xl font-bold text-center mb-12 fade-in">Doświadczenie</h2>
             <div className="timeline-section relative">
               {/* Vertical line with enhanced styling */}
-              <div className="timeline-line absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-blue-500 via-blue-400 to-purple-500 h-full rounded-full shadow-lg"></div>
+              <div className="timeline-line absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-blue-500 via-blue-400 to-purple-500 h-[95%] rounded-full shadow-lg"></div>
 
               {/* Timeline items */}
               <div className="relative z-10">

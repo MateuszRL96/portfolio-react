@@ -5,6 +5,14 @@ const nextConfig = {
     EMAIL_PASS: process.env.EMAIL_PASS,
     EMAIL_TO: process.env.EMAIL_TO,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'placehold.co',
+      },
+    ],
+  },
 }
 
 module.exports = nextConfig 
