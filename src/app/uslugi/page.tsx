@@ -38,7 +38,7 @@ const services: Service[] = [
       'Integracja z social media',
       '3 miesiące wsparcia'
     ],
-    price: 'od 3000 zł',
+    price: '1500 - 3000 zł',
     icon: '🌐'
   },
   {
@@ -53,7 +53,7 @@ const services: Service[] = [
       'Integracja z kurierami',
       '6 miesięcy wsparcia'
     ],
-    price: 'od 6000 zł',
+    price: '3000 - 6000 zł',
     popular: true,
     icon: '🛍️'
   },
@@ -69,7 +69,7 @@ const services: Service[] = [
       'Hosting w chmurze',
       '12 miesięcy wsparcia'
     ],
-    price: 'od 10000 zł',
+    price: 'od 9999 zł',
     icon: '💻'
   },
   {
@@ -84,7 +84,7 @@ const services: Service[] = [
       'Monitoring i raporty',
       'Wsparcie techniczne'
     ],
-    price: 'od 4000 zł',
+    price: 'Wycena indywidualna',
     icon: '⚡'
   }
 ];
@@ -188,7 +188,7 @@ export default function Services() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Pakiety usług */}
         <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-500 via-blue-400 to-white p-8 shadow-lg mb-24">
           <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
@@ -197,66 +197,51 @@ export default function Services() {
             <p className="text-xl text-center mb-12 text-white/90">
               Wybierz pakiet najlepiej dopasowany do Twoich potrzeb
             </p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-4 lg:grid-cols-4 gap-8 max-w-8xl mx-auto">
               {services.map((service) => (
                 <div
-                  key={service.name}
-                  className="group bg-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 relative overflow-hidden"
+                  key={service.id}
+                  className="relative bg-white rounded-xl p-8 shadow-lg hover:-translate-y-2 transition-all"
                 >
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  
-                  {/* Service icon with animated background */}
-                  <div className="relative z-10 mb-6">
-                    <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-3xl transform group-hover:scale-110 transition-transform duration-300">
-                      <span className="text-white">{service.icon}</span>
+                  {service.popular && (
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-4 py-1 rounded-full text-sm font-medium">
+                      Popularne
                     </div>
-                  </div>
-
-                  {/* Service content */}
-                  <div className="relative z-10">
-                    <h3 className="text-2xl font-bold mb-3 text-gray-900 group-hover:text-blue-600 transition-colors">
-                      {service.name}
-                    </h3>
-                    <p className="text-gray-600 mb-6 text-lg">
-                      {service.description}
-                    </p>
-                    
-                    {/* Features with animated checkmarks */}
-                    <ul className="space-y-3 mb-8">
-                      {service.features.map((feature, index) => (
-                        <li key={index} className="flex items-center text-gray-700 group-hover:text-gray-900 transition-colors">
-                          <span className="w-5 h-5 mr-3 rounded-full bg-blue-100 flex items-center justify-center group-hover:bg-blue-500 transition-colors">
-                            <span className="text-blue-500 text-sm group-hover:text-white">✓</span>
-                          </span>
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-
-                    {/* Price and CTA */}
-                    <div className="relative z-10">
-                      <div className="flex items-center justify-between mb-6">
-                        <span className="text-3xl font-bold text-blue-600">
-                          {service.price}
-                        </span>
-                        {service.popular && (
-                          <span className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-4 py-1 rounded-full text-sm">
-                            Popularne
-                          </span>
-                        )}
-                      </div>
-                      <button className="w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white py-3 px-6 rounded-lg font-medium 
-                        hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 
-                        relative overflow-hidden group">
-                        <span className="relative z-10">Wybierz usługę</span>
-                        <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      </button>
+                  )}
+                  <div className="text-5xl mb-6">{service.icon}</div>
+                  <h3 className="text-2xl font-bold mb-4 text-gray-900">{service.name}</h3>
+                  <p className="text-gray-600 mb-6">{service.description}</p>
+                  <ul className="space-y-2 text-gray-600 mb-8">
+                    {service.features.map((feature, index) => (
+                      <li key={index} className="flex items-center gap-2">
+                        <span className="text-emerald-500">✓</span>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="text-center mt-auto">
+                    <div className="mb-4">
+                      <p className="text-2xl font-bold text-gray-900">{service.price}</p>
+                      <p className="text-sm text-gray-600 mt-1">
+                        {service.id === 'strony' && 'Do kilku podstron*'}
+                        {service.id === 'sklepy' && 'Podstawowa funkcjonalność*'}
+                        {service.id === 'aplikacje' && 'W zależności od funkcjonalności*'}
+                        {service.id === 'automatyzacja' && 'Zależna od zakresu projektu*'}
+                      </p>
                     </div>
+                    <Link
+                      href="/kontakt"
+                      className="inline-block w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-3 px-6 rounded-lg font-medium hover:shadow-lg transition-all"
+                    >
+                      Wybierz usługę
+                    </Link>
                   </div>
                 </div>
               ))}
             </div>
+            <p className="text-sm text-white/80 text-center mt-8">
+              * Ostateczna cena może się różnić w zależności od złożoności projektu i dodatkowych wymagań.
+            </p>
           </div>
         </div>
 

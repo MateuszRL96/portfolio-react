@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import Image from 'next/image';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +24,13 @@ const Navigation = () => {
         <div className="flex justify-between h-16">
           <div className="flex">
             <Link href="/" className="flex items-center">
-              <span className="text-xl font-bold">Portfolio</span>
+              <Image
+                src="/logo.png"
+                alt="Logo"
+                width={60}
+                height={60}
+                className="w-auto h-12 object-contain"
+              />
             </Link>
           </div>
 

@@ -4,6 +4,22 @@ import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { gsap, useGSAP } from '../utils/gsap';
+import CodePreview from '@/components/CodePreview';
+import { FaShoppingCart, FaUtensils, FaChartBar } from 'react-icons/fa';
+import { 
+  FaReact, 
+  FaNodeJs, 
+  FaDocker, 
+  FaAws, 
+  FaLinux, 
+  FaWindows,
+  FaDatabase,
+  FaServer,
+  FaCode,
+  FaPalette,
+  FaMobile,
+  FaGlobe
+} from 'react-icons/fa';
 
 interface Project {
   id: string;
@@ -127,42 +143,47 @@ export default function Home() {
       {/* Hero Section */}
       <section className="min-h-screen flex items-center relative overflow-hidden bg-gradient-to-br from-indigo-500 to-purple-600 text-white">
         <div className="absolute inset-0 bg-[radial-gradient(circle,_rgba(255,255,255,0.1)_1px,_transparent_1px)] bg-[length:20px_20px]"></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 grid lg:grid-cols-2 gap-12 items-center">
-          <div className="order-2 lg:order-1">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 fade-in bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">
-              Mateusz Kulec
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 opacity-90 fade-in">
-              Full-Stack Developer & Web Designer
-            </p>
-            <p className="text-lg mb-12 opacity-80 fade-in">
-              Tworzę nowoczesne strony internetowe i aplikacje webowe, które pomagają firmom rozwijać się online.
-              Specjalizuję się w React, Node.js i responsywnym designie.
-            </p>
-            <div className="flex flex-wrap gap-4 fade-in">
-              <Link 
-                href="/kontakt"
-                className="bg-gradient-to-r from-cyan-400 to-emerald-400 text-white px-8 py-4 rounded-full font-semibold text-lg hover:-translate-y-1 hover:shadow-xl transition-all"
-              >
-                Umów konsultację
-              </Link>
-              <Link
-                href="/portfolio"
-                className="bg-white/10 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/20 transition-all border-2 border-white/30"
-              >
-                Zobacz portfolio
-              </Link>
-            </div>
-          </div>
-          <div className="order-1 lg:order-2 fade-in">
-            <div className="relative w-full aspect-square max-w-md mx-auto">
+        <div className="relative z-10 w-full">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-8 px-4">
+            <div className="relative w-[450px] aspect-[3/4]">
               <Image
-                src="/profile.jpg"
+                src="/4.JPG"
                 alt="Mateusz Kulec"
                 fill
-                className="object-cover rounded-2xl shadow-2xl"
+                className="object-cover rounded-3xl shadow-2xl"
                 priority
               />
+            </div>
+
+            <div className="w-full lg:w-[500px] space-y-6 lg:pl-8 h-[450px] flex flex-col justify-center">
+              <h1 className="text-5xl md:text-6xl font-bold fade-in bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">
+                Mateusz Kulec
+              </h1>
+              <p className="text-xl md:text-2xl opacity-90 fade-in">
+                Full-Stack Developer & Web Designer
+              </p>
+              <p className="text-lg opacity-80 fade-in max-w-xl">
+                Tworzę nowoczesne strony internetowe i aplikacje webowe, które pomagają firmom rozwijać się online.
+                Specjalizuję się w React, Node.js i responsywnym designie.
+              </p>
+              <div className="flex flex-wrap gap-4 fade-in">
+                <Link 
+                  href="/kontakt"
+                  className="bg-gradient-to-r from-cyan-400 to-emerald-400 text-white px-8 py-4 rounded-full font-semibold text-lg hover:-translate-y-1 hover:shadow-xl transition-all"
+                >
+                  Umów konsultację
+                </Link>
+                <Link
+                  href="/portfolio"
+                  className="bg-white/10 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/20 transition-all border-2 border-white/30"
+                >
+                  Zobacz portfolio
+                </Link>
+              </div>
+            </div>
+
+            <div className="hidden xl:block w-[400px] h-[500px] flex justify-center items-center">
+              <CodePreview />
             </div>
           </div>
         </div>
@@ -178,14 +199,14 @@ export default function Home() {
             Kompleksowe rozwiązania webowe dla Twojego biznesu
           </p>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-white rounded-xl p-8 shadow-lg hover:-translate-y-2 transition-all border border-gray-100">
               <div className="text-5xl mb-6">🌐</div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">Strony Internetowe</h3>
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">Strony WWW</h3>
               <p className="text-gray-600 mb-6">
-                Projektowanie i tworzenie responsywnych stron internetowych, które wyróżniają się na rynku.
+                Nowoczesne i responsywne strony internetowe dla Twojego biznesu.
               </p>
-              <ul className="space-y-2 text-gray-600">
+              <ul className="space-y-2 text-gray-600 mb-8">
                 <li className="flex items-center gap-2">
                   <span className="text-emerald-500">✓</span>
                   Responsywny design
@@ -206,16 +227,35 @@ export default function Home() {
                   <span className="text-emerald-500">✓</span>
                   Integracja z social media
                 </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-emerald-500">✓</span>
+                  3 miesiące wsparcia
+                </li>
               </ul>
+              <div className="text-center mt-auto">
+                <div className="mb-4">
+                  <p className="text-2xl font-bold text-gray-900">1500 - 3000 zł</p>
+                  <p className="text-sm text-gray-600 mt-1">Do kilku podstron*</p>
+                </div>
+                <Link
+                  href="/kontakt"
+                  className="inline-block w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-3 px-6 rounded-lg font-medium hover:shadow-lg transition-all"
+                >
+                  Wybierz usługę
+                </Link>
+              </div>
             </div>
 
-            <div className="bg-white rounded-xl p-8 shadow-lg hover:-translate-y-2 transition-all border border-gray-100">
-              <div className="text-5xl mb-6">🛒</div>
+            <div className="bg-white rounded-xl p-8 shadow-lg hover:-translate-y-2 transition-all border border-gray-100 relative">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-4 py-1 rounded-full text-sm font-medium">
+                Popularne
+              </div>
+              <div className="text-5xl mb-6">🛍️</div>
               <h3 className="text-2xl font-bold mb-4 text-gray-900">Sklepy Online</h3>
               <p className="text-gray-600 mb-6">
-                Kompleksowe rozwiązania e-commerce z systemami płatności i zarządzaniem zamówieniami.
+                Kompleksowe rozwiązania e-commerce z systemami płatności.
               </p>
-              <ul className="space-y-2 text-gray-600">
+              <ul className="space-y-2 text-gray-600 mb-8">
                 <li className="flex items-center gap-2">
                   <span className="text-emerald-500">✓</span>
                   System płatności online
@@ -230,45 +270,124 @@ export default function Home() {
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-emerald-500">✓</span>
-                  Analityka sprzedaży
+                  Panel administracyjny
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-emerald-500">✓</span>
                   Integracja z kurierami
                 </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-emerald-500">✓</span>
+                  6 miesięcy wsparcia
+                </li>
               </ul>
+              <div className="text-center mt-auto">
+                <div className="mb-4">
+                  <p className="text-2xl font-bold text-gray-900">3000 - 6000 zł</p>
+                  <p className="text-sm text-gray-600 mt-1">Podstawowa funkcjonalność*</p>
+                </div>
+                <Link
+                  href="/kontakt"
+                  className="inline-block w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-3 px-6 rounded-lg font-medium hover:shadow-lg transition-all"
+                >
+                  Wybierz usługę
+                </Link>
+              </div>
             </div>
 
             <div className="bg-white rounded-xl p-8 shadow-lg hover:-translate-y-2 transition-all border border-gray-100">
-              <div className="text-5xl mb-6">📱</div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">Aplikacje Webowe</h3>
+              <div className="text-5xl mb-6">💻</div>
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">Aplikacje Web</h3>
               <p className="text-gray-600 mb-6">
-                Zaawansowane aplikacje SPA z nowoczesną architekturą i wysoką wydajnością.
+                Zaawansowane aplikacje webowe dostosowane do Twoich potrzeb.
               </p>
-              <ul className="space-y-2 text-gray-600">
+              <ul className="space-y-2 text-gray-600 mb-8">
                 <li className="flex items-center gap-2">
                   <span className="text-emerald-500">✓</span>
-                  React/Vue.js frontend
+                  Architektura SPA/PWA
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-emerald-500">✓</span>
-                  API REST/GraphQL
+                  Backend API
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-emerald-500">✓</span>
-                  Bazy danych
+                  Baza danych
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-emerald-500">✓</span>
-                  Autentykacja użytkowników
+                  Autentykacja
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-emerald-500">✓</span>
-                  Deployment na cloud
+                  Hosting w chmurze
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-emerald-500">✓</span>
+                  12 miesięcy wsparcia
                 </li>
               </ul>
+              <div className="text-center mt-auto">
+                <div className="mb-4">
+                  <p className="text-2xl font-bold text-gray-900">od 9999 zł</p>
+                  <p className="text-sm text-gray-600 mt-1">W zależności od funkcjonalności*</p>
+                </div>
+                <Link
+                  href="/kontakt"
+                  className="inline-block w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-3 px-6 rounded-lg font-medium hover:shadow-lg transition-all"
+                >
+                  Wybierz usługę
+                </Link>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-xl p-8 shadow-lg hover:-translate-y-2 transition-all border border-gray-100">
+              <div className="text-5xl mb-6">⚡</div>
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">Automatyzacja</h3>
+              <p className="text-gray-600 mb-6">
+                Automatyzacja procesów biznesowych i integracja systemów.
+              </p>
+              <ul className="space-y-2 text-gray-600 mb-8">
+                <li className="flex items-center gap-2">
+                  <span className="text-emerald-500">✓</span>
+                  Integracja API
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-emerald-500">✓</span>
+                  Skrypty automatyzujące
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-emerald-500">✓</span>
+                  Migracja danych
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-emerald-500">✓</span>
+                  Optymalizacja procesów
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-emerald-500">✓</span>
+                  Monitoring i raporty
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-emerald-500">✓</span>
+                  Wsparcie techniczne
+                </li>
+              </ul>
+              <div className="text-center mt-auto">
+                <div className="mb-4">
+                  <p className="text-2xl font-bold text-gray-900">Wycena indywidualna</p>
+                  <p className="text-sm text-gray-600 mt-1">Zależna od zakresu projektu*</p>
+                </div>
+                <Link
+                  href="/kontakt"
+                  className="inline-block w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-3 px-6 rounded-lg font-medium hover:shadow-lg transition-all"
+                >
+                  Wybierz usługę
+                </Link>
+              </div>
             </div>
           </div>
+          <p className="text-sm text-gray-500 text-center mt-8">* Ostateczna cena może się różnić w zależności od złożoności projektu i dodatkowych wymagań.</p>
         </div>
       </section>
 
@@ -283,22 +402,52 @@ export default function Home() {
           </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project) => (
+            {[
+              {
+                id: 'beans-more',
+                title: 'Beans & More',
+                description: 'Sklep internetowy z kawą premium i akcesoriami baristycznymi.',
+                icon: <FaShoppingCart className="text-6xl text-white" />,
+                technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
+                demoLink: 'https://beans-more.com',
+                caseStudyLink: '/portfolio/beans-more'
+              },
+              {
+                id: 'nonnas-kitchen',
+                title: "Nonna's Kitchen",
+                description: 'Strona restauracji z systemem rezerwacji online.',
+                icon: <FaUtensils className="text-6xl text-white" />,
+                technologies: ['Vue.js', 'Firebase', 'Google Maps API'],
+                demoLink: 'https://nonnas-kitchen.com',
+                caseStudyLink: '/portfolio/nonnas-kitchen'
+              },
+              {
+                id: 'analytics-dashboard',
+                title: 'Analytics Dashboard',
+                description: 'Panel analityczny z zaawansowaną wizualizacją danych.',
+                icon: <FaChartBar className="text-6xl text-white" />,
+                technologies: ['React', 'D3.js', 'Node.js', 'PostgreSQL'],
+                demoLink: 'https://analytics-dashboard.com',
+                caseStudyLink: '/portfolio/analytics-dashboard'
+              }
+            ].map((project) => (
               <div
                 key={project.id}
-                className="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-all border border-gray-100 opacity-100"
+                className="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-all border border-gray-100 group"
               >
-                <div className="h-48 bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center">
-                  <span className="text-4xl font-bold text-white">{project.title}</span>
+                <div className="h-48 bg-gradient-to-br from-sky-400 to-blue-500 flex items-center justify-center">
+                  <div className="transform group-hover:scale-110 transition-transform duration-300">
+                    {project.icon}
+                  </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+                  <h3 className="text-xl font-bold mb-2 text-gray-900">{project.title}</h3>
                   <p className="text-gray-600 mb-4">{project.description}</p>
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.technologies.map((tech, index) => (
                       <span
                         key={index}
-                        className="bg-emerald-50 text-emerald-600 px-3 py-1 rounded-full text-sm"
+                        className="bg-sky-50 text-sky-600 px-3 py-1 rounded-full text-sm"
                       >
                         {tech}
                       </span>
@@ -309,13 +458,13 @@ export default function Home() {
                       href={project.demoLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white text-center py-2 rounded-lg font-medium hover:shadow-lg transition-all"
+                      className="flex-1 bg-gradient-to-r from-sky-400 to-blue-500 text-white text-center py-2 rounded-lg font-medium hover:shadow-lg transition-all"
                     >
                       Demo na żywo
                     </a>
                     <Link
                       href={project.caseStudyLink}
-                      className="flex-1 border-2 border-gray-200 text-gray-600 text-center py-2 rounded-lg font-medium hover:border-emerald-500 hover:text-emerald-500 transition-all"
+                      className="flex-1 border-2 border-gray-200 text-gray-600 text-center py-2 rounded-lg font-medium hover:border-sky-500 hover:text-sky-500 transition-all"
                     >
                       Case Study
                     </Link>
@@ -340,26 +489,64 @@ export default function Home() {
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-center mb-4 fade-in text-gray-900">
-            Umiejętności
+            Technologie
           </h2>
           <p className="text-xl text-gray-600 text-center mb-16 fade-in">
-            Technologie i narzędzia, których używam w codziennej pracy
+            Narzędzia i technologie, których używam w codziennej pracy
           </p>
 
-          <div className="grid md:grid-cols-2 gap-8 skills-section">
-            {skills.map((skill, index) => (
-              <div key={index} className="bg-white p-6 rounded-xl shadow-md border border-gray-100 opacity-100">
-                <div className="flex justify-between mb-2">
-                  <span className="font-medium text-gray-900">{skill.name}</span>
-                  <span className="text-gray-600">{skill.level}%</span>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            {[
+              {
+                icon: <FaReact className="text-5xl text-sky-500" />,
+                name: 'Frontend',
+                description: 'React, Next.js, TypeScript'
+              },
+              {
+                icon: <FaServer className="text-5xl text-indigo-500" />,
+                name: 'Backend',
+                description: 'Node.js, REST API, GraphQL'
+              },
+              {
+                icon: <FaDatabase className="text-5xl text-blue-500" />,
+                name: 'Bazy danych',
+                description: 'SQL, NoSQL, Redis'
+              },
+              {
+                icon: <FaDocker className="text-5xl text-blue-600" />,
+                name: 'Konteneryzacja',
+                description: 'Docker, Kubernetes'
+              },
+              {
+                icon: <FaAws className="text-5xl text-yellow-500" />,
+                name: 'Cloud',
+                description: 'AWS, Azure, GCP'
+              },
+              {
+                icon: <FaLinux className="text-5xl text-gray-800" />,
+                name: 'Systemy',
+                description: 'Linux, Windows Server'
+              },
+              {
+                icon: <FaGlobe className="text-5xl text-green-500" />,
+                name: 'DevOps',
+                description: 'CI/CD, Monitoring'
+              },
+              {
+                icon: <FaPalette className="text-5xl text-pink-500" />,
+                name: 'UI/UX',
+                description: 'Figma, Design Systems'
+              }
+            ].map((skill, index) => (
+              <div
+                key={index}
+                className="bg-white p-8 rounded-xl shadow-lg border border-gray-100 hover:-translate-y-2 transition-all group text-center"
+              >
+                <div className="flex justify-center mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                  {skill.icon}
                 </div>
-                <div className="h-3 bg-gray-100 rounded-full overflow-hidden">
-                  <div
-                    className="skill-bar h-full bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-full"
-                    style={{ width: `${skill.level}%` }}
-                  />
-                </div>
-                <div className="mt-1 text-sm text-gray-500">{skill.category}</div>
+                <h3 className="text-xl font-bold mb-2 text-gray-900">{skill.name}</h3>
+                <p className="text-gray-600 text-sm">{skill.description}</p>
               </div>
             ))}
           </div>
