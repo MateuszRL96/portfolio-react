@@ -291,7 +291,7 @@ export default function About() {
   }, { scope: containerRef });
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-gray-50">
+    <div ref={containerRef} className="min-h-screen bg-gray-50 pb-24">
       {/* Header */}
       <div className="w-full bg-gradient-to-br from-blue-500 via-blue-400 to-blue-300 mb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
