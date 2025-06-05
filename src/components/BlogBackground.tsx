@@ -7,7 +7,8 @@ export function BlogBackground() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    const container = containerRef.current;
+    if (!container) return;
 
     // Setup
     const scene = new THREE.Scene();
@@ -19,16 +20,15 @@ export function BlogBackground() {
     
     // Set renderer size to match container
     const updateSize = () => {
-      if (!containerRef.current) return;
-      const width = containerRef.current.clientWidth;
-      const height = containerRef.current.clientHeight;
+      const width = container.clientWidth;
+      const height = container.clientHeight;
       renderer.setSize(width, height);
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
     };
     
     updateSize();
-    containerRef.current.appendChild(renderer.domElement);
+    container.appendChild(renderer.domElement);
 
     // Define spread constants for element boundaries
     const xSpread = 30;
@@ -148,8 +148,8 @@ export function BlogBackground() {
     // Cleanup
     return () => {
       window.removeEventListener('resize', handleResize);
-      if (containerRef.current) {
-        containerRef.current.removeChild(renderer.domElement);
+      if (container && container.contains(renderer.domElement)) {
+        container.removeChild(renderer.domElement);
       }
       geometries.forEach(geometry => geometry.dispose());
       elements.forEach(element => {

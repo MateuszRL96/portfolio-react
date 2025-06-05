@@ -31,17 +31,17 @@ const CodePreview = () => {
       </div>
       <div className="space-y-2">
         <div className="text-white"><span className="text-purple-400">const</span> <span className="text-blue-400">developer</span> = {'{'}</div>
-        <div className="text-white pl-4"><span className="text-green-400">name</span>: <span className="text-yellow-300">'Mateusz Kulec'</span>,</div>
-        <div className="text-white pl-4"><span className="text-green-400">role</span>: <span className="text-yellow-300">'Full-Stack Developer'</span>,</div>
+        <div className="text-white pl-4"><span className="text-green-400">name</span>: <span className="text-yellow-300">&apos;Mateusz Kulec&apos;</span>,</div>
+        <div className="text-white pl-4"><span className="text-green-400">role</span>: <span className="text-yellow-300">&apos;Full-Stack Developer&apos;</span>,</div>
         <div className="text-white pl-4"><span className="text-green-400">skills</span>: [</div>
-        <div className="text-white pl-8"><span className="text-yellow-300">'React'</span>,</div>
-        <div className="text-white pl-8"><span className="text-yellow-300">'Node.js'</span>,</div>
-        <div className="text-white pl-8"><span className="text-yellow-300">'TypeScript'</span>,</div>
-        <div className="text-white pl-8"><span className="text-yellow-300">'Next.js'</span></div>
+        <div className="text-white pl-8"><span className="text-yellow-300">&apos;React&apos;</span>,</div>
+        <div className="text-white pl-8"><span className="text-yellow-300">&apos;Node.js&apos;</span>,</div>
+        <div className="text-white pl-8"><span className="text-yellow-300">&apos;TypeScript&apos;</span>,</div>
+        <div className="text-white pl-8"><span className="text-yellow-300">&apos;Next.js&apos;</span></div>
         <div className="text-white pl-4">],</div>
-        <div className="text-white pl-4"><span className="text-green-400">passion</span>: <span className="text-yellow-300">'Tworzenie'</span>,</div>
+        <div className="text-white pl-4"><span className="text-green-400">passion</span>: <span className="text-yellow-300">&apos;Tworzenie&apos;</span>,</div>
         <div className="text-white pl-4"><span className="text-blue-400">buildAmazingThings</span>() {'{'}</div>
-        <div className="text-white pl-8"><span className="text-purple-400">return</span> <span className="text-yellow-300">'🚀 Gotowe!'</span>;</div>
+        <div className="text-white pl-8"><span className="text-purple-400">return</span> <span className="text-yellow-300">&apos;🚀 Gotowe!&apos;</span>;</div>
         <div className="text-white pl-4">{'}'}</div>
         <div className="text-white">{'}'}</div>
       </div>
