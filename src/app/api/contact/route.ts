@@ -41,6 +41,12 @@ export async function POST(request: Request) {
       `,
     };
 
+    console.log('Próba wysłania emaila z następującymi opcjami:', {
+      from: mailOptions.from,
+      to: mailOptions.to,
+      subject: mailOptions.subject
+    });
+
     // Wysłanie emaila
     await transporter.sendMail(mailOptions);
 
@@ -63,10 +69,22 @@ export async function POST(request: Request) {
       { message: 'Wiadomość została wysłana pomyślnie' },
       { status: 200 }
     );
-  } catch (error) {
-    console.error('Błąd wysyłania maila:', error);
+  } catch (error: any) {
+    console.error('Szczegóły błędu:', {
+      name: error?.name,
+      message: error?.message,
+      stack: error?.stack,
+      config: {
+        user: process.env.GMAIL_USER ? 'Skonfigurowany' : 'Brak',
+        pass: process.env.GMAIL_APP_PASSWORD ? 'Skonfigurowany' : 'Brak'
+      }
+    });
+    
     return NextResponse.json(
-      { error: 'Wystąpił błąd podczas wysyłania wiadomości' },
+      { 
+        error: 'Wystąpił błąd podczas wysyłania wiadomości',
+        details: error?.message || 'Nieznany błąd'
+      },
       { status: 500 }
     );
   }
