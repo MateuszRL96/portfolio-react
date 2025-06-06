@@ -1,6 +1,11 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
+interface EmailError extends Error {
+  code?: string;
+  response?: string;
+}
+
 // Konfiguracja transportera Nodemailer dla Gmail
 const transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -69,11 +74,13 @@ export async function POST(request: Request) {
       { message: 'Wiadomość została wysłana pomyślnie' },
       { status: 200 }
     );
-  } catch (error: any) {
+  } catch (error) {
+    const emailError = error as EmailError;
     console.error('Szczegóły błędu:', {
-      name: error?.name,
-      message: error?.message,
-      stack: error?.stack,
+      name: emailError.name,
+      message: emailError.message,
+      code: emailError.code,
+      stack: emailError.stack,
       config: {
         user: process.env.GMAIL_USER ? 'Skonfigurowany' : 'Brak',
         pass: process.env.GMAIL_APP_PASSWORD ? 'Skonfigurowany' : 'Brak'
@@ -83,7 +90,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       { 
         error: 'Wystąpił błąd podczas wysyłania wiadomości',
-        details: error?.message || 'Nieznany błąd'
+        details: emailError.message || 'Nieznany błąd'
       },
       { status: 500 }
     );
