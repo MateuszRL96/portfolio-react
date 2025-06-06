@@ -6,16 +6,6 @@ import Link from 'next/link';
 import { services } from '@/data/services';
 import PageHeader from '@/components/PageHeader';
 
-interface Service {
-  id: string;
-  name: string;
-  description: string;
-  features: string[];
-  price: string;
-  popular?: boolean;
-  icon: string;
-}
-
 interface Step {
   title: string;
   description: string;
