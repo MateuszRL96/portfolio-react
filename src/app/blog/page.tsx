@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { categories } from '@/data/blog';
 import { TechIcon } from '@/components/TechIcon';
 import type { BlogPost } from '@/lib/blog';
+import PageHeader from '@/components/PageHeader';
 
 export default function BlogPage() {
   const [posts, setPosts] = useState<BlogPost[]>([]);
@@ -27,14 +28,10 @@ export default function BlogPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 pb-24">
-      <div className="bg-gradient-to-r from-blue-600 to-blue-400 py-24">
-        <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-7xl font-bold mb-6 text-white">Blog</h1>
-          <p className="text-xl text-white/90 max-w-2xl">
-            Artykuły o programowaniu, technologiach i najnowszych trendach w świecie IT.
-          </p>
-        </div>
-      </div>
+      <PageHeader
+        title="Blog"
+        description="Artykuły o programowaniu, technologiach i najnowszych trendach w świecie IT."
+      />
       
       <div className="max-w-7xl mx-auto px-4 pt-12">
         <div className="flex flex-wrap gap-4 mb-12">

@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { gsap, useGSAP } from '../../utils/gsap';
 import Image from 'next/image';
 import { FaChevronLeft, FaChevronRight, FaExternalLinkAlt } from 'react-icons/fa';
+import PageHeader from '@/components/PageHeader';
 
 interface Project {
   id: string;
@@ -183,8 +184,25 @@ export default function Portfolio() {
   const [isLoading, setIsLoading] = useState(true);
   const [currentCourseIndex, setCurrentCourseIndex] = useState(0);
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef(null);
   const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Handle window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Set initial value
+    handleResize();
+
+    // Add event listener
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const nextProject = useCallback(() => {
     setCurrentProjectIndex((prev) => (prev + 1) % filteredProjects.length);
@@ -262,18 +280,10 @@ export default function Portfolio() {
 
   return (
     <div ref={containerRef} className="min-h-screen bg-gray-50 pb-24">
-      {/* Header */}
-      <div className="w-full bg-gradient-to-br from-blue-500 via-blue-400 to-blue-300 mb-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold mb-6 fade-in text-white drop-shadow-md">Portfolio</h1>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto fade-in">
-              Odkryj moje najnowsze projekty i realizacje. Każdy projekt to unikalne rozwiązanie
-              dostosowane do potrzeb klienta.
-            </p>
-          </div>
-        </div>
-      </div>
+      <PageHeader
+        title="Portfolio"
+        description="Odkryj moje najnowsze projekty i realizacje. Każdy projekt to unikalne rozwiązanie dostosowane do potrzeb klienta."
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Filtry */}
@@ -304,47 +314,47 @@ export default function Portfolio() {
             >
               <div 
                 className="flex transition-transform duration-500" 
-                style={{ transform: `translateX(-${currentProjectIndex * 33.333}%)` }}
+                style={{ transform: `translateX(-${currentProjectIndex * (isMobile ? 100 : 33.333)}%)` }}
               >
                 {filteredProjects.map((project, index) => (
                   <div
                     key={project.id}
-                    className="w-1/3 flex-shrink-0 px-4 transition-all duration-500"
+                    className="w-full md:w-1/3 flex-shrink-0 px-4 transition-all duration-500"
                     style={{
                       transform: index === currentProjectIndex ? 'scale(1.05)' : 'scale(1)',
                       zIndex: index === currentProjectIndex ? 10 : 1
                     }}
                   >
                     <div className="project-card group bg-white rounded-xl shadow-lg hover:shadow-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 relative h-full min-h-[600px]">
-                      <div className="h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                        <div className="text-7xl transform group-hover:scale-110 transition-transform duration-300">
+                      <div className="h-36 md:h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                        <div className="text-5xl md:text-7xl transform group-hover:scale-110 transition-transform duration-300">
                           {project.icon}
                         </div>
                       </div>
 
-                      <div className="p-8 relative h-[calc(100%-12rem)] flex flex-col">
+                      <div className="p-4 md:p-8 relative h-[calc(100%-9rem)] md:h-[calc(100%-12rem)] flex flex-col">
                         <div className="flex-grow">
-                          <h3 className="text-2xl font-bold mb-3 text-gray-900 group-hover:text-blue-600 transition-colors">
+                          <h3 className="text-xl md:text-2xl font-bold mb-2 md:mb-3 text-gray-900 group-hover:text-blue-600 transition-colors">
                             {project.title}
                           </h3>
-                          <p className="text-gray-600 mb-6">{project.description}</p>
+                          <p className="text-sm md:text-base text-gray-600 mb-4 md:mb-6">{project.description}</p>
                           
-                          <div className="flex flex-wrap gap-2 mb-6">
+                          <div className="flex flex-wrap gap-1 md:gap-2 mb-4 md:mb-6">
                             {project.technologies.map((tech, index) => (
                               <span
                                 key={index}
-                                className="bg-blue-50 text-blue-600 px-4 py-1 rounded-full text-sm font-medium group-hover:bg-blue-100 transition-colors"
+                                className="bg-blue-50 text-blue-600 px-2 md:px-4 py-1 rounded-full text-xs md:text-sm font-medium group-hover:bg-blue-100 transition-colors"
                               >
                                 {tech}
                               </span>
                             ))}
                           </div>
 
-                          <div className="flex flex-wrap gap-2 mb-6">
+                          <div className="flex flex-wrap gap-2">
                             {project.category.map((cat, index) => (
                               <span
                                 key={index}
-                                className="text-gray-500 text-sm"
+                                className="text-gray-500 text-xs md:text-sm"
                               >
                                 #{cat}
                               </span>
@@ -356,9 +366,9 @@ export default function Portfolio() {
                           href={project.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="block w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white text-center py-3 px-6 rounded-lg font-medium 
+                          className="block w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white text-center py-2 md:py-3 px-4 md:px-6 rounded-lg font-medium 
                             hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 
-                            relative overflow-hidden group"
+                            relative overflow-hidden group text-sm md:text-base"
                         >
                           <span className="relative z-10">Zobacz projekt</span>
                           <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -375,28 +385,28 @@ export default function Portfolio() {
               <>
                 <button
                   onClick={prevProject}
-                  className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 bg-white p-3 rounded-full shadow-lg hover:bg-gray-50 transition-colors z-10"
+                  className="absolute left-0 top-1/2 -translate-y-1/2 md:-translate-x-1/2 bg-white p-2 md:p-3 rounded-full shadow-lg hover:bg-gray-50 transition-colors z-10"
                   aria-label="Poprzedni projekt"
                 >
-                  <FaChevronLeft className="w-6 h-6 text-gray-600" />
+                  <FaChevronLeft className="w-4 h-4 md:w-6 md:h-6 text-gray-600" />
                 </button>
                 <button
                   onClick={nextProject}
-                  className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 bg-white p-3 rounded-full shadow-lg hover:bg-gray-50 transition-colors z-10"
+                  className="absolute right-0 top-1/2 -translate-y-1/2 md:translate-x-1/2 bg-white p-2 md:p-3 rounded-full shadow-lg hover:bg-gray-50 transition-colors z-10"
                   aria-label="Następny projekt"
                 >
-                  <FaChevronRight className="w-6 h-6 text-gray-600" />
+                  <FaChevronRight className="w-4 h-4 md:w-6 md:h-6 text-gray-600" />
                 </button>
 
                 {/* Dots */}
-                <div className="flex justify-center mt-8 gap-2">
+                <div className="flex justify-center mt-4 md:mt-8 gap-1 md:gap-2">
                   {filteredProjects.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setCurrentProjectIndex(index)}
-                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
                         currentProjectIndex === index
-                          ? 'bg-blue-500 w-6'
+                          ? 'bg-blue-500 w-4 md:w-6'
                           : 'bg-gray-300 hover:bg-gray-400'
                       }`}
                       aria-label={`Przejdź do projektu ${index + 1}`}

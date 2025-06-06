@@ -3,6 +3,8 @@
 import { useState, useRef } from 'react';
 import { gsap, useGSAP } from '../../utils/gsap';
 import Link from 'next/link';
+import { services } from '@/data/services';
+import PageHeader from '@/components/PageHeader';
 
 interface Service {
   id: string;
@@ -24,70 +26,6 @@ interface FAQ {
   question: string;
   answer: string;
 }
-
-const services: Service[] = [
-  {
-    id: 'strony',
-    name: 'Strony WWW',
-    description: 'Nowoczesne i responsywne strony internetowe dla Twojego biznesu.',
-    features: [
-      'Responsywny design',
-      'Optymalizacja SEO',
-      'Szybkie ładowanie',
-      'Panel administracyjny',
-      'Integracja z social media',
-      '3 miesiące wsparcia'
-    ],
-    price: '1500 - 3000 zł',
-    icon: '🌐'
-  },
-  {
-    id: 'sklepy',
-    name: 'Sklepy Online',
-    description: 'Kompleksowe rozwiązania e-commerce z systemami płatności.',
-    features: [
-      'System płatności online',
-      'Zarządzanie produktami',
-      'Koszyk i checkout',
-      'Panel administracyjny',
-      'Integracja z kurierami',
-      '6 miesięcy wsparcia'
-    ],
-    price: '3000 - 6000 zł',
-    popular: true,
-    icon: '🛍️'
-  },
-  {
-    id: 'aplikacje',
-    name: 'Aplikacje Web',
-    description: 'Zaawansowane aplikacje webowe dostosowane do Twoich potrzeb.',
-    features: [
-      'Architektura SPA/PWA',
-      'Backend API',
-      'Baza danych',
-      'Autentykacja',
-      'Hosting w chmurze',
-      '12 miesięcy wsparcia'
-    ],
-    price: 'od 9999 zł',
-    icon: '💻'
-  },
-  {
-    id: 'automatyzacja',
-    name: 'Automatyzacja',
-    description: 'Automatyzacja procesów biznesowych i integracja systemów.',
-    features: [
-      'Integracja API',
-      'Skrypty automatyzujące',
-      'Migracja danych',
-      'Optymalizacja procesów',
-      'Monitoring i raporty',
-      'Wsparcie techniczne'
-    ],
-    price: 'Wycena indywidualna',
-    icon: '⚡'
-  }
-];
 
 const steps: Step[] = [
   {
@@ -175,18 +113,10 @@ export default function Services() {
 
   return (
     <div ref={containerRef} className="min-h-screen bg-gray-50 pb-24">
-      {/* Header */}
-      <div className="w-full bg-gradient-to-br from-blue-500 via-blue-400 to-blue-300 mb-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold mb-6 fade-in text-white drop-shadow-md">Usługi</h1>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto fade-in">
-              Oferuję kompleksowe rozwiązania webowe dostosowane do potrzeb Twojego biznesu.
-              Każdy projekt traktuję indywidualnie, dbając o najwyższą jakość i satysfakcję klienta.
-            </p>
-          </div>
-        </div>
-      </div>
+      <PageHeader
+        title="Usługi"
+        description="Oferuję kompleksowe rozwiązania webowe dopasowane do Twoich potrzeb. Każdy projekt traktuję indywidualnie, dbając o najwyższą jakość i satysfakcję klienta."
+      />
 
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Pakiety usług */}

@@ -42,8 +42,8 @@ const Navigation = () => {
                 href={item.href}
                 className={`px-4 py-2 rounded-md text-base font-medium transition-colors
                   ${pathname === item.href
-                    ? 'bg-gray-900 text-white'
-                    : 'text-gray-700 hover:bg-gray-100'
+                    ? 'bg-purple-600 text-white'
+                    : 'text-gray-700 hover:bg-purple-50 hover:text-purple-600'
                   }`}
               >
                 {item.name}
@@ -55,16 +55,17 @@ const Navigation = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-3 rounded-md text-gray-700 hover:bg-gray-100"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-purple-600 hover:bg-purple-50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500"
             >
               <span className="sr-only">Open main menu</span>
               {!isOpen ? (
                 <svg
-                  className="block h-7 w-7"
+                  className="block h-6 w-6"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -75,11 +76,12 @@ const Navigation = () => {
                 </svg>
               ) : (
                 <svg
-                  className="block h-7 w-7"
+                  className="block h-6 w-6"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -97,16 +99,16 @@ const Navigation = () => {
       {/* Mobile menu */}
       {isOpen && (
         <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-2 sm:px-3">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className={`block px-4 py-3 rounded-md text-lg font-medium ${
-                  pathname === item.href
-                    ? 'bg-gray-900 text-white'
-                    : 'text-gray-700 hover:bg-gray-100'
-                }`}
+                className={`block px-3 py-2 rounded-md text-base font-medium transition-colors
+                  ${pathname === item.href
+                    ? 'bg-purple-600 text-white'
+                    : 'text-gray-700 hover:bg-purple-50 hover:text-purple-600'
+                  }`}
                 onClick={() => setIsOpen(false)}
               >
                 {item.name}

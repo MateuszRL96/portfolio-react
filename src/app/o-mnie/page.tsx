@@ -19,6 +19,7 @@ import {
 } from 'react-icons/si';
 import { TbBrandCSharp } from 'react-icons/tb';
 import type { ReactNode } from 'react';
+import PageHeader from '@/components/PageHeader';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -230,33 +231,26 @@ export default function About() {
 
   return (
     <div ref={containerRef} className="min-h-screen bg-gray-50 pb-24">
-      {/* Header */}
-      <div className="w-full bg-gradient-to-br from-blue-500 via-blue-400 to-blue-300 mb-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold mb-6 fade-in text-white drop-shadow-md">O mnie</h1>
-            <div className="max-w-3xl mx-auto">
-              <p className="text-xl text-white/90 mb-8 fade-in">
-                Specjalista IT z pasją do cyberbezpieczeństwa i programowania. Łączę wiedzę techniczną z praktycznym doświadczeniem w zarządzaniu systemami i infrastrukturą IT.
-              </p>
-              <div className="flex justify-center gap-6 fade-in">
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-4">
-                  <div className="text-white/90 text-sm mb-1">Obecna rola</div>
-                  <div className="text-white font-semibold">IT Specialist @ Consbridge Chemicals</div>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-4">
-                  <div className="text-white/90 text-sm mb-1">Edukacja</div>
-                  <div className="text-white font-semibold">Magister Cyberbezpieczeństwa</div>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-4">
-                  <div className="text-white/90 text-sm mb-1">Specjalizacja</div>
-                  <div className="text-white font-semibold">Bezpieczeństwo IT & Rozwój Systemów</div>
-                </div>
-              </div>
+      <PageHeader
+        title="O mnie"
+        description="Specjalista IT z pasją do cyberbezpieczeństwa i programowania. Łączę wiedzę techniczną z praktycznym doświadczeniem w zarządzaniu systemami i infrastrukturą IT."
+        extraContent={
+          <div className="flex justify-center gap-6 fade-in">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-4">
+              <div className="text-white/90 text-sm mb-1">Obecna rola</div>
+              <div className="text-white font-semibold">IT Specialist @ Consbridge Chemicals</div>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-4">
+              <div className="text-white/90 text-sm mb-1">Edukacja</div>
+              <div className="text-white font-semibold">Magister Cyberbezpieczeństwa</div>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-4">
+              <div className="text-white/90 text-sm mb-1">Specjalizacja</div>
+              <div className="text-white font-semibold">Bezpieczeństwo IT & Rozwój Systemów</div>
             </div>
           </div>
-        </div>
-      </div>
+        }
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* About Hero Section */}
