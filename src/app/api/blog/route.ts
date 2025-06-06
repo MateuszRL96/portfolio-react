@@ -35,7 +35,7 @@ export async function GET(request: Request) {
       const posts = getAllPosts();
       return NextResponse.json(posts);
     }
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
@@ -87,7 +87,7 @@ function getPostById(id: string): BlogPost | null {
       readingTime,
       ...(matterResult.data as Omit<BlogPost, 'id' | 'content' | 'readingTime'>),
     };
-  } catch (error) {
+  } catch {
     return null;
   }
 } 

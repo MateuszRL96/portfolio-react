@@ -3,16 +3,16 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FaArrowLeft } from 'react-icons/fa';
 import { getBlogPost, type BlogPost } from '@/lib/blog';
-import { TechIcon } from '@/components/TechIcon';
 
 interface Props {
   params: {
     slug: string;
   };
+  searchParams: { [key: string]: string | string[] | undefined };
 }
 
 export default async function BlogPost({ params }: Props) {
-  let post = await getBlogPost(params.slug);
+  const post = await getBlogPost(params.slug);
 
   if (!post) {
     notFound();

@@ -3,7 +3,7 @@ title: "React Hooks: Kompletne wprowadzenie"
 date: "2024-06-10"
 excerpt: "Poznaj podstawy React Hooks i dowiedz się, jak efektywnie zarządzać stanem i efektami ubocznymi w aplikacjach React."
 author: "Mateusz Kulec"
-coverImage: "/blog-images/react-hooks.jpg"
+coverImage: "/blog-images/Next.JS.png"
 tags: ["React", "JavaScript", "Hooks", "Frontend"]
 category: "Frontend"
 icon: "FaReact"
