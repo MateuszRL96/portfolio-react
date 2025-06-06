@@ -3,12 +3,27 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FaArrowLeft } from 'react-icons/fa';
 import { getBlogPost, type BlogPost } from '@/lib/blog';
+import type { Metadata } from 'next';
 
-interface Props {
-  params: {
-    slug: string;
+type PageParams = {
+  slug: string;
+};
+
+type Props = {
+  params: PageParams;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const post = await getBlogPost(params.slug);
+  if (!post) {
+    return {
+      title: 'Post nie znaleziony'
+    };
+  }
+  return {
+    title: post.title,
+    description: post.excerpt
   };
-  searchParams: { [key: string]: string | string[] | undefined };
 }
 
 export default async function BlogPost({ params }: Props) {

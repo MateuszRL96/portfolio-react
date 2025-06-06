@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { gsap, useGSAP } from '../../utils/gsap';
 import Image from 'next/image';
-import { FaGraduationCap, FaChevronLeft, FaChevronRight, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight, FaExternalLinkAlt } from 'react-icons/fa';
 
 interface Project {
   id: string;
@@ -186,13 +186,13 @@ export default function Portfolio() {
   const containerRef = useRef(null);
   const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
 
-  const nextProject = () => {
+  const nextProject = useCallback(() => {
     setCurrentProjectIndex((prev) => (prev + 1) % filteredProjects.length);
-  };
+  }, [filteredProjects.length]);
 
-  const prevProject = () => {
+  const prevProject = useCallback(() => {
     setCurrentProjectIndex((prev) => (prev - 1 + filteredProjects.length) % filteredProjects.length);
-  };
+  }, [filteredProjects.length]);
 
   const nextCourse = () => {
     setCurrentCourseIndex((prev) => (prev + 1) % courses.length);

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import { gsap, useGSAP } from '../../utils/gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
@@ -22,19 +22,6 @@ import type { ReactNode } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface Skill {
-  name: string;
-  level: number;
-  category: 'frontend' | 'backend' | 'other';
-}
-
-interface Experience {
-  company: string;
-  position: string;
-  period: string;
-  description: string[];
-}
-
 interface TimelineItem {
   date: string;
   title: string;
@@ -50,61 +37,12 @@ interface TechStack {
   category: 'frontend' | 'backend' | 'database' | 'devops' | 'testing' | 'ai' | 'security' | 'it' | 'messaging';
 }
 
-const skills: Skill[] = [
-  { name: 'React', level: 95, category: 'frontend' },
-  { name: 'TypeScript', level: 90, category: 'frontend' },
-  { name: 'Next.js', level: 85, category: 'frontend' },
-  { name: 'Node.js', level: 80, category: 'backend' },
-  { name: 'Express', level: 85, category: 'backend' },
-  { name: 'MongoDB', level: 75, category: 'backend' },
-  { name: 'PostgreSQL', level: 70, category: 'backend' },
-  { name: 'Docker', level: 65, category: 'other' },
-  { name: 'AWS', level: 60, category: 'other' },
-  { name: 'UI/UX Design', level: 75, category: 'other' }
-];
-
-const experience: Experience[] = [
-  {
-    company: 'TechCorp Solutions',
-    position: 'Senior Full-Stack Developer',
-    period: '2021 - obecnie',
-    description: [
-      'Prowadzenie zespołu 5 developerów przy projektach e-commerce',
-      'Implementacja mikroserwisów w Node.js i TypeScript',
-      'Optymalizacja wydajności aplikacji React i Next.js',
-      'Code review i mentoring juniorów'
-    ]
-  },
-  {
-    company: 'Digital Agency',
-    position: 'Frontend Developer',
-    period: '2019 - 2021',
-    description: [
-      'Tworzenie responsywnych interfejsów użytkownika',
-      'Implementacja animacji i interakcji w GSAP',
-      'Integracja z REST API i GraphQL',
-      'Optymalizacja SEO i wydajności'
-    ]
-  },
-  {
-    company: 'Startup Inc.',
-    position: 'Junior Web Developer',
-    period: '2018 - 2019',
-    description: [
-      'Rozwój aplikacji w React i Redux',
-      'Implementacja responsywnych layoutów',
-      'Współpraca z designerami i product ownerami',
-      'Testowanie i debugging'
-    ]
-  }
-];
-
 const timeline: TimelineItem[] = [
   {
     date: '2025',
     title: 'IT Specialist',
     company: 'Consbridge Chemicals',
-    description: "Praca na stanowisku specjalisty IT, odpowiedzialnego za zarządzanie systemami ERP, WMS oraz infrastrukturą IT. Zajmuję się administracją, wdrażaniem i utrzymaniem systemów informatycznych oraz wsparciem technicznym użytkowników.",
+    description: 'Praca na stanowisku specjalisty IT, odpowiedzialnego za zarządzanie systemami ERP, WMS oraz infrastrukturą IT. Zajmuję się administracją, wdrażaniem i utrzymaniem systemów informatycznych oraz wsparciem technicznym użytkowników.',
     technologies: ['ERP', 'WMS', 'IT Infrastructure', 'System Administration', 'Technical Support'],
     icon: '💼'
   },
@@ -640,7 +578,7 @@ export default function About() {
               </div>
               <h3 className="font-bold text-xl mb-3 text-center group-hover:text-blue-600 transition-colors">Literatura</h3>
               <p className="text-gray-600 text-center">
-                Zagłębiam się w klasykach literatury i powieściach kryminalnych. Szczególnie cenię dzieła Arthura Conan Doyle'a (Sherlock Holmes), Alexandre'a Dumasa oraz Stephena Kinga. Książki rozwijają wyobraźnię i pomagają w kreatywnym myśleniu.
+                Zagłębiam się w klasykach literatury i powieściach kryminalnych. Szczególnie cenię dzieła Arthura Conan Doyle&apos;a (Sherlock Holmes), Alexandre&apos;a Dumasa oraz Stephena Kinga. Książki rozwijają wyobraźnię i pomagają w kreatywnym myśleniu.
               </p>
             </div>
 

@@ -5,24 +5,17 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { gsap, useGSAP } from '../utils/gsap';
 import CodePreview from '@/components/CodePreview';
-import { FaShoppingCart, FaUtensils, FaChartBar, FaChevronLeft, FaChevronRight, FaGithub, FaLinkedin } from 'react-icons/fa';
-import { SiGmail } from 'react-icons/si';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { 
   FaReact, 
-  FaNodeJs, 
   FaDocker, 
   FaAws, 
-  FaLinux, 
-  FaWindows,
+  FaLinux,
   FaDatabase,
   FaServer,
-  FaCode,
   FaPalette,
-  FaMobile,
   FaGlobe
 } from 'react-icons/fa';
-import { ProjectCard } from '@/components/ProjectCard';
-import { TechIcon } from '@/components/TechIcon';
 
 interface Project {
   id: string;
@@ -40,27 +33,9 @@ interface Technology {
   icon: string;
 }
 
-interface Skill {
-  name: string;
-  level: number;
-  category: string;
-}
-
 export default function Home() {
-  const containerRef = useRef(null);
-
-  const skills: Skill[] = [
-    { name: 'React', level: 95, category: 'Frontend' },
-    { name: 'TypeScript', level: 90, category: 'Frontend' },
-    { name: 'Next.js', level: 85, category: 'Frontend' },
-    { name: 'Node.js', level: 80, category: 'Backend' },
-    { name: 'Express', level: 85, category: 'Backend' },
-    { name: 'MongoDB', level: 75, category: 'Backend' },
-    { name: 'PostgreSQL', level: 70, category: 'Backend' },
-    { name: 'Docker', level: 65, category: 'DevOps' },
-    { name: 'AWS', level: 60, category: 'DevOps' },
-    { name: 'UI/UX Design', level: 75, category: 'Design' }
-  ];
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [currentProjectIndex, setCurrentProjectIndex] = useState<number>(0);
 
   useEffect(() => {
     // Ensure elements are visible by default
@@ -181,14 +156,12 @@ export default function Home() {
     { name: 'Figma', icon: '🎨' }
   ];
 
-  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
-
   const nextProject = () => {
-    setCurrentProjectIndex((prev) => (prev + 1) % projects.length);
+    setCurrentProjectIndex((prev: number) => (prev + 1) % projects.length);
   };
 
   const prevProject = () => {
-    setCurrentProjectIndex((prev) => (prev - 1 + projects.length) % projects.length);
+    setCurrentProjectIndex((prev: number) => (prev - 1 + projects.length) % projects.length);
   };
 
   return (
