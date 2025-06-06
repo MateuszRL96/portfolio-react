@@ -5,7 +5,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { gsap, useGSAP } from '../utils/gsap';
 import CodePreview from '@/components/CodePreview';
-import { FaShoppingCart, FaUtensils, FaChartBar, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaShoppingCart, FaUtensils, FaChartBar, FaChevronLeft, FaChevronRight, FaGithub, FaLinkedin } from 'react-icons/fa';
+import { SiGmail } from 'react-icons/si';
 import { 
   FaReact, 
   FaNodeJs, 
@@ -20,6 +21,8 @@ import {
   FaMobile,
   FaGlobe
 } from 'react-icons/fa';
+import { ProjectCard } from '@/components/ProjectCard';
+import { TechIcon } from '@/components/TechIcon';
 
 interface Project {
   id: string;

@@ -6,7 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
 import { 
   FaReact, FaNodeJs, FaJava, FaDocker, FaGitAlt, FaHtml5, FaCss3Alt, FaAngular,
-  FaDatabase, FaAws, FaLinux, FaNpm, FaPython, FaWindows, FaServer, FaShieldAlt,
+  FaAws, FaLinux, FaPython, FaWindows, FaServer, FaShieldAlt,
   FaNetworkWired, FaMicrosoft, FaUserShield, FaLock, FaCloud
 } from 'react-icons/fa';
 import { 
@@ -104,7 +104,7 @@ const timeline: TimelineItem[] = [
     date: '2025',
     title: 'IT Specialist',
     company: 'Consbridge Chemicals',
-    description: 'Praca na stanowisku specjalisty IT, odpowiedzialnego za zarządzanie systemami ERP, WMS oraz infrastrukturą IT. Zajmuję się administracją, wdrażaniem i utrzymaniem systemów informatycznych oraz wsparciem technicznym użytkowników.',
+    description: "Praca na stanowisku specjalisty IT, odpowiedzialnego za zarządzanie systemami ERP, WMS oraz infrastrukturą IT. Zajmuję się administracją, wdrażaniem i utrzymaniem systemów informatycznych oraz wsparciem technicznym użytkowników.",
     technologies: ['ERP', 'WMS', 'IT Infrastructure', 'System Administration', 'Technical Support'],
     icon: '💼'
   },

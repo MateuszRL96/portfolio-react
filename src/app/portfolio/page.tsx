@@ -204,16 +204,14 @@ export default function Portfolio() {
 
   // Automatyczne przewijanie
   useEffect(() => {
-    autoPlayRef.current = setInterval(() => {
-      nextProject();
-    }, 5000);
+    autoPlayRef.current = setInterval(nextProject, 5000);
 
     return () => {
       if (autoPlayRef.current) {
         clearInterval(autoPlayRef.current);
       }
     };
-  }, [filteredProjects.length]);
+  }, [filteredProjects.length, nextProject]);
 
   // Zatrzymaj automatyczne przewijanie przy interakcji użytkownika
   const pauseAutoPlay = () => {
