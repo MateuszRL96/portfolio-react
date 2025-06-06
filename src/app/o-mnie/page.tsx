@@ -91,76 +91,76 @@ const timeline: TimelineItem[] = [
 
 const techStack: TechStack[] = [
   // Frontend
-  { name: 'React', icon: <FaReact className="w-12 h-12" />, category: 'frontend' },
-  { name: 'Angular', icon: <FaAngular className="w-12 h-12" />, category: 'frontend' },
-  { name: 'Next.js', icon: <SiNextdotjs className="w-12 h-12" />, category: 'frontend' },
-  { name: 'TypeScript', icon: <SiTypescript className="w-12 h-12" />, category: 'frontend' },
-  { name: 'JavaScript', icon: <SiJavascript className="w-12 h-12" />, category: 'frontend' },
-  { name: 'Redux', icon: <SiRedux className="w-12 h-12" />, category: 'frontend' },
-  { name: 'Tailwind CSS', icon: <SiTailwindcss className="w-12 h-12" />, category: 'frontend' },
-  { name: 'Three.js', icon: <SiThreedotjs className="w-12 h-12" />, category: 'frontend' },
-  { name: 'HTML5', icon: <FaHtml5 className="w-12 h-12" />, category: 'frontend' },
-  { name: 'CSS3', icon: <FaCss3Alt className="w-12 h-12" />, category: 'frontend' },
+  { name: 'React', icon: <FaReact className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'frontend' },
+  { name: 'Angular', icon: <FaAngular className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'frontend' },
+  { name: 'Next.js', icon: <SiNextdotjs className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'frontend' },
+  { name: 'TypeScript', icon: <SiTypescript className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'frontend' },
+  { name: 'JavaScript', icon: <SiJavascript className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'frontend' },
+  { name: 'Redux', icon: <SiRedux className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'frontend' },
+  { name: 'Tailwind CSS', icon: <SiTailwindcss className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'frontend' },
+  { name: 'Three.js', icon: <SiThreedotjs className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'frontend' },
+  { name: 'HTML5', icon: <FaHtml5 className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'frontend' },
+  { name: 'CSS3', icon: <FaCss3Alt className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'frontend' },
   
   // Backend
-  { name: 'Node.js', icon: <FaNodeJs className="w-12 h-12" />, category: 'backend' },
-  { name: 'Express', icon: <SiExpress className="w-12 h-12" />, category: 'backend' },
-  { name: 'Java', icon: <FaJava className="w-12 h-12" />, category: 'backend' },
-  { name: 'Spring Boot', icon: <SiSpring className="w-12 h-12" />, category: 'backend' },
-  { name: 'C#', icon: <TbBrandCSharp className="w-12 h-12" />, category: 'backend' },
-  { name: 'Python', icon: <FaPython className="w-12 h-12" />, category: 'backend' },
-  { name: 'Firebase', icon: <SiFirebase className="w-12 h-12" />, category: 'backend' },
+  { name: 'Node.js', icon: <FaNodeJs className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'backend' },
+  { name: 'Express', icon: <SiExpress className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'backend' },
+  { name: 'Java', icon: <FaJava className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'backend' },
+  { name: 'Spring Boot', icon: <SiSpring className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'backend' },
+  { name: 'C#', icon: <TbBrandCSharp className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'backend' },
+  { name: 'Python', icon: <FaPython className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'backend' },
+  { name: 'Firebase', icon: <SiFirebase className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'backend' },
   
   // Database
-  { name: 'PostgreSQL', icon: <SiPostgresql className="w-12 h-12" />, category: 'database' },
-  { name: 'MongoDB', icon: <SiMongodb className="w-12 h-12" />, category: 'database' },
-  { name: 'MySQL', icon: <SiMysql className="w-12 h-12" />, category: 'database' },
-  { name: 'Oracle', icon: <SiOracle className="w-12 h-12" />, category: 'database' },
-  { name: 'Redis', icon: <SiRedis className="w-12 h-12" />, category: 'database' },
-  { name: 'MariaDB', icon: <SiMariadb className="w-12 h-12" />, category: 'database' },
+  { name: 'PostgreSQL', icon: <SiPostgresql className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'database' },
+  { name: 'MongoDB', icon: <SiMongodb className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'database' },
+  { name: 'MySQL', icon: <SiMysql className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'database' },
+  { name: 'Oracle', icon: <SiOracle className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'database' },
+  { name: 'Redis', icon: <SiRedis className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'database' },
+  { name: 'MariaDB', icon: <SiMariadb className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'database' },
   
   // DevOps & Tools
-  { name: 'Docker', icon: <FaDocker className="w-12 h-12" />, category: 'devops' },
-  { name: 'Kubernetes', icon: <SiKubernetes className="w-12 h-12" />, category: 'devops' },
-  { name: 'Git', icon: <FaGitAlt className="w-12 h-12" />, category: 'devops' },
-  { name: 'AWS', icon: <FaAws className="w-12 h-12" />, category: 'devops' },
-  { name: 'Azure', icon: <FaCloud className="w-12 h-12" />, category: 'devops' },
-  { name: 'Jenkins', icon: <SiJenkins className="w-12 h-12" />, category: 'devops' },
-  { name: 'Grafana', icon: <SiGrafana className="w-12 h-12" />, category: 'devops' },
-  { name: 'Prometheus', icon: <SiPrometheus className="w-12 h-12" />, category: 'devops' },
+  { name: 'Docker', icon: <FaDocker className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'devops' },
+  { name: 'Kubernetes', icon: <SiKubernetes className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'devops' },
+  { name: 'Git', icon: <FaGitAlt className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'devops' },
+  { name: 'AWS', icon: <FaAws className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'devops' },
+  { name: 'Azure', icon: <FaCloud className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'devops' },
+  { name: 'Jenkins', icon: <SiJenkins className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'devops' },
+  { name: 'Grafana', icon: <SiGrafana className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'devops' },
+  { name: 'Prometheus', icon: <SiPrometheus className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'devops' },
   
   // Testing
-  { name: 'JUnit', icon: <SiJunit5 className="w-12 h-12" />, category: 'testing' },
-  { name: 'Selenium', icon: <SiSelenium className="w-12 h-12" />, category: 'testing' },
-  { name: 'Cypress', icon: <SiCypress className="w-12 h-12" />, category: 'testing' },
-  { name: 'Postman', icon: <SiPostman className="w-12 h-12" />, category: 'testing' },
-  { name: 'SonarQube', icon: <SiSonarqube className="w-12 h-12" />, category: 'testing' },
+  { name: 'JUnit', icon: <SiJunit5 className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'testing' },
+  { name: 'Selenium', icon: <SiSelenium className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'testing' },
+  { name: 'Cypress', icon: <SiCypress className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'testing' },
+  { name: 'Postman', icon: <SiPostman className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'testing' },
+  { name: 'SonarQube', icon: <SiSonarqube className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'testing' },
 
   // AI & Machine Learning
-  { name: 'TensorFlow', icon: <SiTensorflow className="w-12 h-12" />, category: 'ai' },
-  { name: 'PyTorch', icon: <SiPytorch className="w-12 h-12" />, category: 'ai' },
-  { name: 'Scikit-learn', icon: <SiScikitlearn className="w-12 h-12" />, category: 'ai' },
+  { name: 'TensorFlow', icon: <SiTensorflow className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'ai' },
+  { name: 'PyTorch', icon: <SiPytorch className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'ai' },
+  { name: 'Scikit-learn', icon: <SiScikitlearn className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'ai' },
 
   // IT Administration
-  { name: 'Linux', icon: <FaLinux className="w-12 h-12" />, category: 'it' },
-  { name: 'Windows Server', icon: <FaWindows className="w-12 h-12" />, category: 'it' },
-  { name: 'VMware', icon: <SiVmware className="w-12 h-12" />, category: 'it' },
-  { name: 'Microsoft 365', icon: <FaMicrosoft className="w-12 h-12" />, category: 'it' },
-  { name: 'Ansible', icon: <SiAnsible className="w-12 h-12" />, category: 'it' },
-  { name: 'Terraform', icon: <SiTerraform className="w-12 h-12" />, category: 'it' },
-  { name: 'Server Admin', icon: <FaServer className="w-12 h-12" />, category: 'it' },
-  { name: 'Networking', icon: <FaNetworkWired className="w-12 h-12" />, category: 'it' },
+  { name: 'Linux', icon: <FaLinux className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'it' },
+  { name: 'Windows Server', icon: <FaWindows className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'it' },
+  { name: 'VMware', icon: <SiVmware className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'it' },
+  { name: 'Microsoft 365', icon: <FaMicrosoft className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'it' },
+  { name: 'Ansible', icon: <SiAnsible className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'it' },
+  { name: 'Terraform', icon: <SiTerraform className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'it' },
+  { name: 'Server Admin', icon: <FaServer className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'it' },
+  { name: 'Networking', icon: <FaNetworkWired className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'it' },
 
   // Cybersecurity
-  { name: 'Network Security', icon: <FaShieldAlt className="w-12 h-12" />, category: 'security' },
-  { name: 'Kali Linux', icon: <SiKalilinux className="w-12 h-12" />, category: 'security' },
-  { name: 'Wireshark', icon: <SiWireshark className="w-12 h-12" />, category: 'security' },
-  { name: 'Identity & Access', icon: <FaUserShield className="w-12 h-12" />, category: 'security' },
-  { name: 'Encryption', icon: <FaLock className="w-12 h-12" />, category: 'security' },
+  { name: 'Network Security', icon: <FaShieldAlt className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'security' },
+  { name: 'Kali Linux', icon: <SiKalilinux className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'security' },
+  { name: 'Wireshark', icon: <SiWireshark className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'security' },
+  { name: 'Identity & Access', icon: <FaUserShield className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'security' },
+  { name: 'Encryption', icon: <FaLock className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'security' },
 
   // Message Brokers
-  { name: 'Kafka', icon: <SiApachekafka className="w-12 h-12" />, category: 'messaging' },
-  { name: 'RabbitMQ', icon: <SiRabbitmq className="w-12 h-12" />, category: 'messaging' }
+  { name: 'Kafka', icon: <SiApachekafka className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'messaging' },
+  { name: 'RabbitMQ', icon: <SiRabbitmq className="w-8 h-8 lg:w-10 lg:h-10" />, category: 'messaging' }
 ];
 
 export default function About() {
@@ -235,18 +235,18 @@ export default function About() {
         title="O mnie"
         description="Specjalista IT z pasją do cyberbezpieczeństwa i programowania. Łączę wiedzę techniczną z praktycznym doświadczeniem w zarządzaniu systemami i infrastrukturą IT."
         extraContent={
-          <div className="flex justify-center gap-6 fade-in">
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-4">
+          <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 fade-in">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg px-4 sm:px-6 py-4">
               <div className="text-white/90 text-sm mb-1">Obecna rola</div>
-              <div className="text-white font-semibold">IT Specialist @ Consbridge Chemicals</div>
+              <div className="text-white font-semibold text-sm sm:text-base">IT Specialist @ Consbridge Chemicals</div>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-4">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg px-4 sm:px-6 py-4">
               <div className="text-white/90 text-sm mb-1">Edukacja</div>
-              <div className="text-white font-semibold">Magister Cyberbezpieczeństwa</div>
+              <div className="text-white font-semibold text-sm sm:text-base">Magister Cyberbezpieczeństwa</div>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-4">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg px-4 sm:px-6 py-4">
               <div className="text-white/90 text-sm mb-1">Specjalizacja</div>
-              <div className="text-white font-semibold">Bezpieczeństwo IT & Rozwój Systemów</div>
+              <div className="text-white font-semibold text-sm sm:text-base">Bezpieczeństwo IT & Rozwój Systemów</div>
             </div>
           </div>
         }
@@ -254,12 +254,12 @@ export default function About() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* About Hero Section */}
-        <div className="mb-24">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="mb-16">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Content */}
             <div className="fade-in">
               <h2 className="text-3xl font-bold mb-6">Cześć, jestem Mateusz!</h2>
-              <div className="space-y-6 text-gray-600">
+              <div className="space-y-4 text-gray-600">
                 <p>
                   Jestem specjalistą IT z silnym zapleczem w zakresie cyberbezpieczeństwa i programowania. Obecnie pracuję jako IT Specialist w Consbridge Chemicals, gdzie zajmuję się zarządzaniem systemami ERP, WMS oraz infrastrukturą IT. Równolegle kontynuuję edukację na studiach magisterskich z cyberbezpieczeństwa, rozwijając swoje umiejętności w zakresie bezpieczeństwa systemów i sieci.
                 </p>
@@ -272,24 +272,24 @@ export default function About() {
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-8 mt-12">
+              <div className="grid grid-cols-3 gap-6 mt-8">
                 <div className="text-center">
-                  <div className="text-4xl font-bold text-blue-600 mb-2">15+</div>
-                  <div className="text-gray-600">Projektów IT</div>
+                  <div className="text-3xl font-bold text-blue-600 mb-1">15+</div>
+                  <div className="text-gray-600 text-sm">Projektów IT</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-4xl font-bold text-blue-600 mb-2">2+</div>
-                  <div className="text-gray-600">Lata doświadczenia</div>
+                  <div className="text-3xl font-bold text-blue-600 mb-1">2+</div>
+                  <div className="text-gray-600 text-sm">Lata doświadczenia</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-4xl font-bold text-blue-600 mb-2">10+</div>
-                  <div className="text-gray-600">Certyfikatów</div>
+                  <div className="text-3xl font-bold text-blue-600 mb-1">10+</div>
+                  <div className="text-gray-600 text-sm">Certyfikatów</div>
                 </div>
               </div>
             </div>
 
             {/* Image */}
-            <div className="relative h-[600px] rounded-2xl overflow-hidden shadow-xl fade-in">
+            <div className="relative h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-xl fade-in">
               <Image
                 src="/profile.jpg"
                 alt="Mateusz Kulec"
@@ -302,24 +302,24 @@ export default function About() {
         </div>
 
         {/* Sekcja Umiejętności */}
-        <div className="mb-24 skills-section">
-          <h2 className="text-3xl font-bold text-center mb-12 fade-in">Stack Technologiczny</h2>
+        <div className="mb-16 skills-section">
+          <h2 className="text-3xl font-bold text-center mb-8 fade-in">Stack Technologiczny</h2>
           
           {/* Frontend */}
-          <div className="mb-16">
-            <h3 className="text-2xl font-semibold mb-8 text-center text-blue-600">Frontend</h3>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+          <div className="mb-12">
+            <h3 className="text-2xl font-semibold mb-6 text-center text-blue-600">Frontend</h3>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 lg:gap-6">
               {techStack
                 .filter(tech => tech.category === 'frontend')
                 .map((tech, index) => (
                   <div
                     key={index}
-                    className="flex flex-col items-center justify-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group"
+                    className="flex flex-col items-center justify-center p-4 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group"
                   >
-                    <div className="text-gray-600 group-hover:text-blue-500 transition-colors duration-300">
+                    <div className="text-gray-600 group-hover:text-blue-500 transition-colors duration-300 w-8 h-8 lg:w-10 lg:h-10">
                       {tech.icon}
                     </div>
-                    <span className="mt-4 font-medium text-gray-800">{tech.name}</span>
+                    <span className="mt-2 font-medium text-gray-800 text-sm">{tech.name}</span>
                   </div>
                 ))}
             </div>
@@ -467,7 +467,7 @@ export default function About() {
         </div>
 
         {/* Timeline Section - Doświadczenie */}
-        <div className="mb-24 relative">
+        <div className="mb-16 relative">
           {/* Background patterns */}
           <div className="absolute inset-0 overflow-hidden">
             {/* Circuit-like pattern */}
@@ -553,45 +553,45 @@ export default function About() {
         </div>
 
         {/* Sekcja Zainteresowań */}
-        <div className="mb-24">
-          <h2 className="text-3xl font-bold text-center mb-12 fade-in">Zainteresowania</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 fade-in">
-            <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center text-2xl mx-auto mb-4 transform group-hover:scale-110 transition-transform duration-300">
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold text-center mb-8 fade-in">Zainteresowania</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 fade-in">
+            <div className="bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center text-xl sm:text-2xl mx-auto mb-4 transform group-hover:scale-110 transition-transform duration-300">
                 <span className="text-white">💻</span>
               </div>
-              <h3 className="font-bold text-xl mb-3 text-center group-hover:text-blue-600 transition-colors">Open Source</h3>
-              <p className="text-gray-600 text-center">
+              <h3 className="font-bold text-lg sm:text-xl mb-2 text-center group-hover:text-blue-600 transition-colors">Open Source</h3>
+              <p className="text-gray-600 text-center text-sm sm:text-base">
                 Aktywnie uczestniczę w społeczności open source, tworząc własne projekty i kontrybuując do istniejących. Fascynuje mnie idea dzielenia się wiedzą i kodem z innymi programistami.
               </p>
             </div>
 
-            <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center text-2xl mx-auto mb-4 transform group-hover:scale-110 transition-transform duration-300">
+            <div className="bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center text-xl sm:text-2xl mx-auto mb-4 transform group-hover:scale-110 transition-transform duration-300">
                 <span className="text-white">📚</span>
               </div>
-              <h3 className="font-bold text-xl mb-3 text-center group-hover:text-blue-600 transition-colors">Literatura</h3>
-              <p className="text-gray-600 text-center">
+              <h3 className="font-bold text-lg sm:text-xl mb-2 text-center group-hover:text-blue-600 transition-colors">Literatura</h3>
+              <p className="text-gray-600 text-center text-sm sm:text-base">
                 Zagłębiam się w klasykach literatury i powieściach kryminalnych. Szczególnie cenię dzieła Arthura Conan Doyle&apos;a (Sherlock Holmes), Alexandre&apos;a Dumasa oraz Stephena Kinga. Książki rozwijają wyobraźnię i pomagają w kreatywnym myśleniu.
               </p>
             </div>
 
-            <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center text-2xl mx-auto mb-4 transform group-hover:scale-110 transition-transform duration-300">
+            <div className="bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center text-xl sm:text-2xl mx-auto mb-4 transform group-hover:scale-110 transition-transform duration-300">
                 <span className="text-white">🎵</span>
               </div>
-              <h3 className="font-bold text-xl mb-3 text-center group-hover:text-blue-600 transition-colors">Muzyka</h3>
-              <p className="text-gray-600 text-center">
+              <h3 className="font-bold text-lg sm:text-xl mb-2 text-center group-hover:text-blue-600 transition-colors">Muzyka</h3>
+              <p className="text-gray-600 text-center text-sm sm:text-base">
                 Jestem melomanem o szerokich horyzontach muzycznych. Słucham różnych gatunków: od klasycznego rocka, przez jazz, po muzykę elektroniczną. Muzyka towarzyszy mi podczas programowania i pomaga w koncentracji.
               </p>
             </div>
 
-            <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center text-2xl mx-auto mb-4 transform group-hover:scale-110 transition-transform duration-300">
+            <div className="bg-white rounded-xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center text-xl sm:text-2xl mx-auto mb-4 transform group-hover:scale-110 transition-transform duration-300">
                 <span className="text-white">⚽</span>
               </div>
-              <h3 className="font-bold text-xl mb-3 text-center group-hover:text-blue-600 transition-colors">Sport</h3>
-              <p className="text-gray-600 text-center">
+              <h3 className="font-bold text-lg sm:text-xl mb-2 text-center group-hover:text-blue-600 transition-colors">Sport</h3>
+              <p className="text-gray-600 text-center text-sm sm:text-base">
                 Piłka nożna to moja pasja - zarówno gra, jak i oglądanie meczów. Regularnie uczestniczę w amatorskich rozgrywkach. Sport pomaga mi zachować równowagę między pracą umysłową a aktywnością fizyczną.
               </p>
             </div>
