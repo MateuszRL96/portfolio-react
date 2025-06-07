@@ -197,16 +197,8 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold mb-2">Lokalizacja</h3>
-                  <a 
-                    href="https://www.google.com/maps/place/Kraków"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-700 transition-colors mb-1 block"
-                  >
-                    Kraków, Małopolska
-                  </a>
-                  <p className="text-sm text-gray-500">Spotkania online lub stacjonarne</p>
-                  <p className="text-sm text-gray-500">Obsługuję klientów z całej Polski</p>
+                  <p className="text-gray-600 mb-1">Rzeszów, Polska</p>
+                  <p className="text-sm text-gray-500">Możliwość spotkania online lub stacjonarnie</p>
                 </div>
               </div>
             </div>
@@ -218,16 +210,15 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold mb-2">LinkedIn</h3>
-                  <p className="text-gray-600 mb-1">Profesjonalny profil</p>
-                  <p className="text-sm text-gray-500">Połączmy się zawodowo</p>
                   <a 
-                    href="https://www.linkedin.com/in/mateusz-kulec-027a63227/"
+                    href="https://www.linkedin.com/in/mateusz-kulec"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-500 hover:text-blue-600 transition-colors mt-2 inline-block"
+                    className="text-blue-600 hover:text-blue-700 transition-colors mb-1 block"
                   >
-                    Zobacz profil
+                    linkedin.com/in/mateusz-kulec
                   </a>
+                  <p className="text-sm text-gray-500">Bądźmy w kontakcie zawodowym</p>
                 </div>
               </div>
             </div>
@@ -478,6 +469,34 @@ export default function Contact() {
                 </div>
               )}
             </form>
+          </div>
+        </div>
+
+        {/* Google Forms Section at the bottom */}
+        <div className="mt-16 text-center">
+          <h2 className="text-3xl font-bold mb-6 fade-in">Alternatywny sposób kontaktu</h2>
+          <div className="max-w-2xl mx-auto bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
+            <div className="flex flex-col items-center gap-6">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
+                <FaComments className="w-8 h-8 text-white" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold mb-4">Formularz Kontaktowy Google</h3>
+                <p className="text-gray-600 mb-6 max-w-xl">
+                  Wolisz prostszy sposób? Skorzystaj z naszego formularza Google, aby szybko i wygodnie złożyć zapytanie o usługę.
+                  Po wypełnieniu formularza otrzymasz automatyczne potwierdzenie na podany adres email.
+                </p>
+                <a 
+                  href="https://docs.google.com/forms/d/e/1FAIpQLScxIoeWuQZcplvFS1AKBCwVFfPu36v1z5oQjwpdkLc6J1dUGg/viewform"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-colors text-lg font-medium"
+                >
+                  <span>Wypełnij formularz Google</span>
+                  <FaArrowRight className="w-5 h-5" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -468,87 +468,106 @@ export default function About() {
 
         {/* Timeline Section - Doświadczenie */}
         <div className="mb-16 relative">
-          {/* Background patterns */}
-          <div className="absolute inset-0 overflow-hidden">
-            {/* Circuit-like pattern */}
-            <div className="absolute inset-0 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px] opacity-[0.015]"></div>
-            
-            {/* Gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 via-transparent to-gray-50/50"></div>
-            
-            {/* Abstract shapes */}
-            <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
-            
-            {/* Floating dots */}
-            <div className="absolute top-1/4 right-1/4 w-4 h-4 bg-blue-500/10 rounded-full"></div>
-            <div className="absolute bottom-1/4 left-1/4 w-6 h-6 bg-purple-500/10 rounded-full"></div>
-            
-            {/* Code-like pattern */}
-            <div className="absolute inset-0" style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b82f6' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-              backgroundSize: '60px 60px'
-            }}></div>
-          </div>
+          <h2 className="text-3xl font-bold text-center mb-8 fade-in">Doświadczenie</h2>
+          
+          {/* Timeline container */}
+          <div className="max-w-7xl mx-auto">
+            {/* Desktop only - vertical line */}
+            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-blue-400 to-purple-500"></div>
 
-          <div className="relative z-10">
-            <h2 className="text-3xl font-bold text-center mb-12 fade-in">Doświadczenie</h2>
-            <div className="timeline-section relative">
-              {/* Vertical line with enhanced styling */}
-              <div className="timeline-line absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-blue-500 via-blue-400 to-purple-500 h-[95%] rounded-full shadow-lg"></div>
-
-              {/* Timeline items */}
-              <div className="relative z-10">
-                {timeline.map((item, index) => (
-                  <div
-                    key={index}
-                    className={`timeline-item group relative flex items-center gap-8 mb-16 ${
-                      index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
-                    }`}
-                  >
-                    {/* Date bubble */}
-                    <div className="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-white rounded-full border-4 border-blue-500 z-20 flex items-center justify-center">
-                      <span className="text-2xl">{item.icon}</span>
-                    </div>
-
-                    {/* Content */}
-                    <div className={`w-1/2 ${index % 2 === 0 ? 'text-right pr-16' : 'pl-16'}`}>
-                      <div className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group">
-                        {/* Gradient overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        
-                        {/* Content */}
-                        <div className="relative z-10">
-                          <span className="text-blue-600 font-bold text-lg mb-2 block">{item.date}</span>
-                          <h3 className="text-2xl font-bold mb-2 text-gray-900 group-hover:text-blue-600 transition-colors">
-                            {item.title}
-                          </h3>
-                          <h4 className="text-lg font-medium text-blue-500 mb-4">{item.company}</h4>
-                          <p className="text-gray-600 mb-6">{item.description}</p>
-                          
-                          {/* Technologies */}
-                          {item.technologies && (
-                            <div className="flex flex-wrap gap-2">
-                              {item.technologies.map((tech, techIndex) => (
-                                <span
-                                  key={techIndex}
-                                  className="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-medium group-hover:bg-blue-100 transition-colors"
-                                >
-                                  {tech}
-                                </span>
-                              ))}
-                            </div>
-                          )}
-                        </div>
+            {/* Timeline items */}
+            {timeline.map((item, index) => (
+              <div key={index}>
+                {/* Mobile version */}
+                <div className="block md:hidden">
+                  <article className="mx-4 mb-6 bg-white rounded-lg shadow p-4">
+                    <header className="mb-4">
+                      <div className="flex items-center gap-3 mb-2">
+                        <span className="text-xl bg-blue-100 text-blue-600 p-2 rounded-full">{item.icon}</span>
+                        <time className="text-blue-600 font-bold">{item.date}</time>
                       </div>
+                      <h3 className="text-xl font-bold text-gray-900">{item.title}</h3>
+                      <div className="text-blue-500 font-medium">{item.company}</div>
+                    </header>
+                    
+                    <div className="space-y-4">
+                      <div className="prose prose-sm max-w-none">
+                        <p className="text-gray-600">{item.description}</p>
+                      </div>
+                      
+                      {item.technologies && (
+                        <div className="flex flex-wrap gap-2">
+                          {item.technologies.map((tech, techIndex) => (
+                            <span
+                              key={techIndex}
+                              className="bg-blue-50 text-blue-600 px-2 py-1 text-sm rounded-full"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      )}
                     </div>
+                  </article>
+                </div>
 
-                    {/* Empty space for opposite side */}
-                    <div className="w-1/2"></div>
+                {/* Desktop version */}
+                <div className="hidden md:flex items-center mb-16">
+                  {/* Left content */}
+                  <div className={`w-1/2 ${index % 2 === 0 ? 'pr-16 text-right' : ''}`}>
+                    {index % 2 === 0 && (
+                      <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-all duration-300">
+                        <span className="text-blue-600 font-bold text-lg block mb-2">{item.date}</span>
+                        <h3 className="text-2xl font-bold mb-2 text-gray-900">{item.title}</h3>
+                        <h4 className="text-lg font-medium text-blue-500 mb-4">{item.company}</h4>
+                        <p className="text-gray-600 mb-6">{item.description}</p>
+                        {item.technologies && (
+                          <div className="flex flex-wrap gap-2 justify-end">
+                            {item.technologies.map((tech, techIndex) => (
+                              <span
+                                key={techIndex}
+                                className="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-medium"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </div>
-                ))}
+
+                  {/* Center icon */}
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-white rounded-full border-4 border-blue-500 z-10 flex items-center justify-center">
+                    <span className="text-2xl">{item.icon}</span>
+                  </div>
+
+                  {/* Right content */}
+                  <div className={`w-1/2 ${index % 2 === 1 ? 'pl-16' : ''}`}>
+                    {index % 2 === 1 && (
+                      <div className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-all duration-300">
+                        <span className="text-blue-600 font-bold text-lg block mb-2">{item.date}</span>
+                        <h3 className="text-2xl font-bold mb-2 text-gray-900">{item.title}</h3>
+                        <h4 className="text-lg font-medium text-blue-500 mb-4">{item.company}</h4>
+                        <p className="text-gray-600 mb-6">{item.description}</p>
+                        {item.technologies && (
+                          <div className="flex flex-wrap gap-2">
+                            {item.technologies.map((tech, techIndex) => (
+                              <span
+                                key={techIndex}
+                                className="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm font-medium"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
 
