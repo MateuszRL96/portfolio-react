@@ -16,6 +16,7 @@ import {
   FaPalette,
   FaGlobe
 } from 'react-icons/fa';
+import { services, Service } from '@/data/services';
 
 interface Project {
   id: string;
@@ -216,202 +217,49 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-bold text-center mb-4 fade-in text-gray-900">
-            Moja Oferta
-          </h2>
+      <section className="py-24 bg-gradient-to-br from-blue-500 via-blue-400 to-white">
+        <div className="max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-4 fade-in">Moja Oferta</h2>
           <p className="text-xl text-gray-600 text-center mb-16 fade-in">
             Kompleksowe rozwiązania webowe dla Twojego biznesu
           </p>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-white rounded-xl p-8 shadow-lg hover:-translate-y-2 transition-all border border-gray-100">
-              <div className="text-5xl mb-6">🌐</div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">Strony WWW</h3>
-              <p className="text-gray-600 mb-6">
-                Nowoczesne i responsywne strony internetowe dla Twojego biznesu.
-              </p>
-              <ul className="space-y-2 text-gray-600 mb-8">
-                <li className="flex items-center gap-2">
-                  <span className="text-emerald-500">✓</span>
-                  Responsywny design
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-emerald-500">✓</span>
-                  Optymalizacja SEO
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-emerald-500">✓</span>
-                  Szybkie ładowanie
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-emerald-500">✓</span>
-                  Panel administracyjny
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-emerald-500">✓</span>
-                  Integracja z social media
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-emerald-500">✓</span>
-                  3 miesiące wsparcia
-                </li>
-              </ul>
-              <div className="text-center mt-auto">
-                <div className="mb-4">
-                  <p className="text-2xl font-bold text-gray-900">1500 - 3000 zł</p>
-                  <p className="text-sm text-gray-600 mt-1">Do kilku podstron*</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {services.map((service: Service) => (
+              <div key={service.id} className="bg-white rounded-xl p-8 shadow-lg hover:-translate-y-2 transition-all border border-gray-100">
+                <div className="text-5xl mb-6">{service.icon}</div>
+                <h3 className="text-2xl font-bold mb-4 text-gray-900">{service.name}</h3>
+                <p className="text-gray-600 mb-6">
+                  {service.description}
+                </p>
+                <ul className="space-y-2 text-gray-600 mb-8">
+                  {service.features.map((feature: string, index: number) => (
+                    <li key={index} className="flex items-center gap-2">
+                      <span className="text-emerald-500">✓</span>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                <div className="text-center mt-auto">
+                  <div className="mb-4">
+                    <p className="text-2xl font-bold text-gray-900">{service.price}</p>
+                    <p className="text-sm text-gray-600 mt-1">
+                      {service.id === 'strony' && 'Do kilku podstron*'}
+                      {service.id === 'sklepy' && 'Podstawowa funkcjonalność*'}
+                      {service.id === 'aplikacje' && 'W zależności od funkcjonalności*'}
+                      {service.id === 'automatyzacja' && 'Zależna od zakresu projektu*'}
+                      {service.id === 'sklep-one-page' && 'jedna strona*'}
+                    </p>
+                  </div>
+                  <Link
+                    href="/kontakt"
+                    className="inline-block w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-3 px-6 rounded-lg font-medium hover:shadow-lg transition-all"
+                  >
+                    Wybierz usługę
+                  </Link>
                 </div>
-                <Link
-                  href="/kontakt"
-                  className="inline-block w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-3 px-6 rounded-lg font-medium hover:shadow-lg transition-all"
-                >
-                  Wybierz usługę
-                </Link>
               </div>
-            </div>
-
-            <div className="bg-white rounded-xl p-8 shadow-lg hover:-translate-y-2 transition-all border border-gray-100 relative">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-4 py-1 rounded-full text-sm font-medium">
-                Popularne
-              </div>
-              <div className="text-5xl mb-6">🛍️</div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">Sklepy Online</h3>
-              <p className="text-gray-600 mb-6">
-                Kompleksowe rozwiązania e-commerce z systemami płatności.
-              </p>
-              <ul className="space-y-2 text-gray-600 mb-8">
-                <li className="flex items-center gap-2">
-                  <span className="text-emerald-500">✓</span>
-                  System płatności online
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-emerald-500">✓</span>
-                  Zarządzanie produktami
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-emerald-500">✓</span>
-                  Koszyk i checkout
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-emerald-500">✓</span>
-                  Panel administracyjny
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-emerald-500">✓</span>
-                  Integracja z kurierami
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-emerald-500">✓</span>
-                  6 miesięcy wsparcia
-                </li>
-              </ul>
-              <div className="text-center mt-auto">
-                <div className="mb-4">
-                  <p className="text-2xl font-bold text-gray-900">3000 - 6000 zł</p>
-                  <p className="text-sm text-gray-600 mt-1">Podstawowa funkcjonalność*</p>
-                </div>
-                <Link
-                  href="/kontakt"
-                  className="inline-block w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-3 px-6 rounded-lg font-medium hover:shadow-lg transition-all"
-                >
-                  Wybierz usługę
-                </Link>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-xl p-8 shadow-lg hover:-translate-y-2 transition-all border border-gray-100">
-              <div className="text-5xl mb-6">💻</div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">Aplikacje Web</h3>
-              <p className="text-gray-600 mb-6">
-                Zaawansowane aplikacje webowe dostosowane do Twoich potrzeb.
-              </p>
-              <ul className="space-y-2 text-gray-600 mb-8">
-                <li className="flex items-center gap-2">
-                  <span className="text-emerald-500">✓</span>
-                  Architektura SPA/PWA
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-emerald-500">✓</span>
-                  Backend API
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-emerald-500">✓</span>
-                  Baza danych
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-emerald-500">✓</span>
-                  Autentykacja
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-emerald-500">✓</span>
-                  Hosting w chmurze
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-emerald-500">✓</span>
-                  12 miesięcy wsparcia
-                </li>
-              </ul>
-              <div className="text-center mt-auto">
-                <div className="mb-4">
-                  <p className="text-2xl font-bold text-gray-900">od 9999 zł</p>
-                  <p className="text-sm text-gray-600 mt-1">W zależności od funkcjonalności*</p>
-                </div>
-                <Link
-                  href="/kontakt"
-                  className="inline-block w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-3 px-6 rounded-lg font-medium hover:shadow-lg transition-all"
-                >
-                  Wybierz usługę
-                </Link>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-xl p-8 shadow-lg hover:-translate-y-2 transition-all border border-gray-100">
-              <div className="text-5xl mb-6">⚡</div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">Automatyzacja</h3>
-              <p className="text-gray-600 mb-6">
-                Automatyzacja procesów biznesowych i integracja systemów.
-              </p>
-              <ul className="space-y-2 text-gray-600 mb-8">
-                <li className="flex items-center gap-2">
-                  <span className="text-emerald-500">✓</span>
-                  Integracja API
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-emerald-500">✓</span>
-                  Skrypty automatyzujące
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-emerald-500">✓</span>
-                  Migracja danych
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-emerald-500">✓</span>
-                  Optymalizacja procesów
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-emerald-500">✓</span>
-                  Monitoring i raporty
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-emerald-500">✓</span>
-                  Wsparcie techniczne
-                </li>
-              </ul>
-              <div className="text-center mt-auto">
-                <div className="mb-4">
-                  <p className="text-2xl font-bold text-gray-900">Wycena indywidualna</p>
-                  <p className="text-sm text-gray-600 mt-1">Zależna od zakresu projektu*</p>
-                </div>
-                <Link
-                  href="/kontakt"
-                  className="inline-block w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-3 px-6 rounded-lg font-medium hover:shadow-lg transition-all"
-                >
-                  Wybierz usługę
-                </Link>
-              </div>
-            </div>
+            ))}
           </div>
           <p className="text-sm text-gray-500 text-center mt-8">* Ostateczna cena może się różnić w zależności od złożoności projektu i dodatkowych wymagań.</p>
         </div>

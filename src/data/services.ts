@@ -10,6 +10,21 @@ export interface Service {
 
 export const services: Service[] = [
   {
+    id: 'sklep-one-page',
+    name: 'Sklep One-Page',
+    description: 'Nowoczesny sklep internetowy w formie jednej strony.',
+    features: [
+      'Jedna funkcjonalna strona',
+      'System płatności online',
+      'Responsywny design',
+      'Optymalizacja pod SEO',
+      'Szybkie ładowanie',
+      '3 miesiące wsparcia'
+    ],
+    price: '300 - 1000 zł',
+    icon: '🛍️'
+  },
+  {
     id: 'strony',
     name: 'Strony WWW',
     description: 'Nowoczesne i responsywne strony internetowe dla Twojego biznesu.',

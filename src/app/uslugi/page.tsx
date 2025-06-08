@@ -117,7 +117,7 @@ export default function Services() {
             <p className="text-xl text-center mb-12 text-white/90">
               Wybierz pakiet najlepiej dopasowany do Twoich potrzeb
             </p>
-            <div className="grid md:grid-cols-4 lg:grid-cols-4 gap-8 max-w-8xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-[2000px] mx-auto">
               {services.map((service) => (
                 <div
                   key={service.id}
@@ -147,6 +147,7 @@ export default function Services() {
                         {service.id === 'sklepy' && 'Podstawowa funkcjonalność*'}
                         {service.id === 'aplikacje' && 'W zależności od funkcjonalności*'}
                         {service.id === 'automatyzacja' && 'Zależna od zakresu projektu*'}
+                        {service.id === 'sklep-one-page' && 'jedna strona*'}
                       </p>
                     </div>
                     <Link

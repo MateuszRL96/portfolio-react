@@ -28,6 +28,15 @@ interface Course {
 
 const projects: Project[] = [
   {
+    id: 'shop-one-page',
+    title: 'Sklep One-Page',
+    description: 'Nowoczesny sklep internetowy w formie jednej strony. Idealne rozwiązanie dla małych biznesów, które chcą szybko zaistnieć w internecie.',
+    icon: '🛍️',
+    category: ['web', 'e-commerce'],
+    technologies: ['React', 'Next.js', 'Tailwind CSS', 'Stripe'],
+    link: 'https://github.com/MateuszRL96/shop-one-page'
+  },
+  {
     id: 'banking-app',
     title: 'Aplikacja Bankowa JavaFX',
     description: 'Aplikacja bankowa z interfejsem graficznym zbudowana w JavaFX. Zawiera podstawowe funkcjonalności bankowe oraz bazę danych SQLite.',
