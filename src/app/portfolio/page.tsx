@@ -14,6 +14,7 @@ interface Project {
   category: string[];
   technologies: string[];
   link: string;
+  previewImage: string;
 }
 
 interface Course {
@@ -28,76 +29,44 @@ interface Course {
 
 const projects: Project[] = [
   {
-    id: 'shop-one-page',
-    title: 'Sklep One-Page',
-    description: 'Nowoczesny sklep internetowy w formie jednej strony. Idealne rozwiązanie dla małych biznesów, które chcą szybko zaistnieć w internecie.',
-    icon: '🛍️',
-    category: ['web', 'e-commerce'],
-    technologies: ['React', 'Next.js', 'Tailwind CSS', 'Stripe'],
-    link: 'https://github.com/MateuszRL96/shop-one-page'
-  },
-  {
-    id: 'banking-app',
-    title: 'Aplikacja Bankowa JavaFX',
-    description: 'Aplikacja bankowa z interfejsem graficznym zbudowana w JavaFX. Zawiera podstawowe funkcjonalności bankowe oraz bazę danych SQLite.',
-    icon: '🏦',
-    category: ['aplikacje', 'desktop'],
-    technologies: ['Java', 'JavaFX', 'SQLite', 'CSS'],
-    link: 'https://github.com/MateuszRL96/AplikacjaBankowaJavaFX1'
-  },
-  {
-    id: 'qualification-manager',
-    title: 'Qualification Manager',
-    description: 'System zarządzania i rekomendacji kwalifikacji zawodowych. Wykorzystuje uczenie maszynowe do sugerowania kwalifikacji.',
-    icon: '🎓',
-    category: ['web', 'ai'],
-    technologies: ['Java', 'Spring Boot', 'PostgreSQL', 'Docker'],
-    link: 'https://github.com/MateuszRL96/QualificationManager'
-  },
-  {
-    id: 'projekt-atomow',
-    title: 'Model Elektronu',
-    description: 'Interaktywny model elektronu stworzony przy użyciu Three.js. Projekt edukacyjny prezentujący wizualizację 3D modelu atomowego.',
-    icon: '⚛️',
-    category: ['web', '3d'],
-    technologies: ['JavaScript', 'Three.js', 'HTML', 'CSS'],
-    link: 'https://github.com/MateuszRL96/ProjektAtomow'
-  },
-  {
-    id: 'qualification-recommendation',
-    title: 'Qualification Recommendation',
-    description: 'System rekomendacji kwalifikacji wykorzystujący algorytmy uczenia maszynowego.',
-    icon: '🤖',
-    category: ['ai', 'web'],
-    technologies: ['Python', 'TensorFlow', 'Flask', 'PostgreSQL'],
-    link: 'https://github.com/MateuszRL96/qulificationRecomendation'
-  },
-  {
-    id: 'books-manager',
-    title: 'Books Manager',
-    description: 'Aplikacja do zarządzania kolekcją książek z możliwością kategoryzacji i oceniania.',
-    icon: '📚',
+    id: 'dogtest',
+    title: 'DogTest - Platforma Testowa dla Psów',
+    description: 'Nowoczesna aplikacja webowa do przeprowadzania testów behawioralnych psów. Platforma umożliwia trenerom i właścicielom psów przeprowadzanie standaryzowanych testów, ocenę wyników i śledzenie postępów czworonożnych podopiecznych.',
+    icon: '🐕',
     category: ['web', 'aplikacje'],
-    technologies: ['React', 'Node.js', 'MongoDB', 'Express'],
-    link: 'https://github.com/MateuszRL96/Books'
+    technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Node.js', 'MongoDB'],
+    link: '/portfolio/dogtest',
+    previewImage: '/portfolio/dogtest/Zrzut ekranu z 2025-06-22 21-37-24.png'
   },
   {
-    id: 'projekt-fruits',
-    title: 'Fruits Shop',
-    description: 'Sklep internetowy z owocami i warzywami, oferujący system zamówień online.',
-    icon: '🍎',
-    category: ['web', 'e-commerce'],
-    technologies: ['React', 'Redux', 'Node.js', 'MongoDB'],
-    link: 'https://github.com/MateuszRL96/ProjektFruits'
+    id: 'consagrico',
+    title: 'Consagrico - Platforma Biznesowa',
+    description: 'Kompleksowa platforma biznesowa oferująca narzędzia do zarządzania projektami, komunikacji zespołowej i analizy danych. Nowoczesny interfejs z zaawansowanymi funkcjonalnościami dla firm.',
+    icon: '🏢',
+    category: ['web', 'aplikacje'],
+    technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Node.js', 'PostgreSQL'],
+    link: '/portfolio/consagrico',
+    previewImage: '/portfolio/consagrico/Zrzut ekranu z 2025-06-22 15-12-40.png'
   },
   {
-    id: 'javafx-calculator',
-    title: 'JavaFX Calculator',
-    description: 'Zaawansowany kalkulator z interfejsem graficznym stworzony w JavaFX.',
-    icon: '🧮',
-    category: ['aplikacje', 'desktop'],
-    technologies: ['Java', 'JavaFX', 'CSS'],
-    link: 'https://github.com/MateuszRL96/JavaFXCalculator'
+    id: 'kursprogramowania',
+    title: 'Kurs Programowania Online',
+    description: 'Interaktywna platforma edukacyjna do nauki programowania. Zawiera kursy z różnych języków programowania, ćwiczenia praktyczne i system śledzenia postępów uczniów.',
+    icon: '💻',
+    category: ['web', 'aplikacje'],
+    technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Node.js', 'MongoDB'],
+    link: '/portfolio/kursprogramowania',
+    previewImage: '/portfolio/kursprogramowania/Zrzut ekranu z 2025-06-22 15-06-23.png'
+  },
+  {
+    id: 'wyprowadzaniepsow',
+    title: 'Wyprowadzanie Psów - Platforma Usługowa',
+    description: 'Platforma łącząca właścicieli psów z profesjonalnymi wyprowadzaczami. System rezerwacji, ocen i płatności online. Aplikacja mobilna dla wygodnego dostępu w terenie.',
+    icon: '🦮',
+    category: ['web', 'aplikacje'],
+    technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Node.js', 'PostgreSQL'],
+    link: '/portfolio/wyprowadzaniepsow',
+    previewImage: '/portfolio/wyprowadzaniepsow/Zrzut ekranu z 2025-06-22 15-01-29.png'
   }
 ];
 
@@ -185,7 +154,7 @@ const courses: Course[] = [
   }
 ];
 
-const categories = ['wszystkie', 'web', 'e-commerce', 'aplikacje', 'desktop', 'ai', '3d', 'booking'];
+const categories = ['wszystkie', 'web', 'aplikacje'];
 
 export default function Portfolio() {
   const [selectedCategory, setSelectedCategory] = useState('wszystkie');
@@ -335,10 +304,14 @@ export default function Portfolio() {
                     }}
                   >
                     <div className="project-card group bg-white rounded-xl shadow-lg hover:shadow-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 relative h-full min-h-[600px]">
-                      <div className="h-36 md:h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                        <div className="text-5xl md:text-7xl transform group-hover:scale-110 transition-transform duration-300">
-                          {project.icon}
-                        </div>
+                      <div className="h-36 md:h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center relative overflow-hidden">
+                        <Image
+                          src={project.previewImage}
+                          alt={project.title}
+                          fill
+                          className="object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-600/20"></div>
                       </div>
 
                       <div className="p-4 md:p-8 relative h-[calc(100%-9rem)] md:h-[calc(100%-12rem)] flex flex-col">
@@ -373,8 +346,6 @@ export default function Portfolio() {
 
                         <a
                           href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
                           className="block w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white text-center py-2 md:py-3 px-4 md:px-6 rounded-lg font-medium 
                             hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 
                             relative overflow-hidden group text-sm md:text-base"

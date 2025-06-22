@@ -17,6 +17,7 @@ import {
   FaGlobe
 } from 'react-icons/fa';
 import { services, Service } from '@/data/services';
+import AnimatedDotsBackground from '@/components/AnimatedDotsBackground';
 
 interface Project {
   id: string;
@@ -217,10 +218,11 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="py-24 bg-gradient-to-br from-blue-500 via-blue-400 to-white">
-        <div className="max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 bg-gradient-to-br from-purple-600 to-indigo-500 text-white relative overflow-hidden mt-10">
+        <AnimatedDotsBackground />
+        <div className="max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <h2 className="text-3xl font-bold text-center mb-4 fade-in">Moja Oferta</h2>
-          <p className="text-xl text-gray-600 text-center mb-16 fade-in">
+          <p className="text-xl text-gray-600 text-center mb-16 fade-in text-white">
             Kompleksowe rozwiązania webowe dla Twojego biznesu
           </p>
 
@@ -266,7 +268,7 @@ export default function Home() {
       </section>
 
       {/* Portfolio Section */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-center mb-4 fade-in text-gray-900">
             Portfolio
