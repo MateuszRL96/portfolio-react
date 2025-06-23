@@ -3,7 +3,7 @@
 import { useState, useRef } from 'react';
 import { gsap, useGSAP } from '../../../utils/gsap';
 import Image from 'next/image';
-import { FaChevronLeft, FaChevronRight, FaExternalLinkAlt, FaGithub, FaReact, FaNodeJs, FaDatabase } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight, FaReact, FaNodeJs } from 'react-icons/fa';
 import { SiTypescript, SiNextdotjs, SiTailwindcss, SiPostgresql } from 'react-icons/si';
 import PageHeader from '@/components/PageHeader';
 
@@ -342,7 +342,7 @@ export default function WyprowadzaniePsowProject() {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></span>
-                  <span>Integracja Stripe z webhook'ami</span>
+                  <span>Integracja Stripe z webhook&apos;ami</span>
                 </li>
               </ul>
             </div>

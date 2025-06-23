@@ -38,6 +38,21 @@ function createStarGeometry(size: number) {
   return geometry;
 }
 
+interface StarProperties {
+  velocity: {
+    x: number;
+    y: number;
+    z: number;
+  };
+  twinkleSpeed: number;
+  twinklePhase: number;
+  baseOpacity: number;
+}
+
+interface StarMesh extends THREE.Mesh {
+  userData: StarProperties;
+}
+
 export default function AnimatedDotsBackground({ className = '' }: AnimatedDotsBackgroundProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<THREE.Scene | null>(null);
@@ -70,7 +85,8 @@ export default function AnimatedDotsBackground({ className = '' }: AnimatedDotsB
     rendererRef.current = renderer;
 
     // Add renderer to container
-    containerRef.current.appendChild(renderer.domElement);
+    const container = containerRef.current;
+    container.appendChild(renderer.domElement);
 
     // Create stars with different sizes and effects
     const stars: THREE.Mesh[] = [];
@@ -108,16 +124,16 @@ export default function AnimatedDotsBackground({ className = '' }: AnimatedDotsB
       star.rotation.z = Math.random() * Math.PI * 2;
       
       // Systematic left-to-right movement with slight vertical variation
-      (star as any).velocity = {
-        x: 0.012 + (Math.random() * 0.008), // Slightly slower for more stars
-        y: (Math.random() - 0.5) * 0.003, // Minimal vertical movement
-        z: (Math.random() - 0.5) * 0.003  // Minimal depth movement
-      };
-      
-      // Twinkling effect properties
-      (star as any).twinkleSpeed = 0.02 + Math.random() * 0.03;
-      (star as any).twinklePhase = Math.random() * Math.PI * 2;
-      (star as any).baseOpacity = 0.4 + Math.random() * 0.4; // Different base opacities
+      star.userData = {
+        velocity: {
+          x: 0.012 + (Math.random() * 0.008), // Slightly slower for more stars
+          y: (Math.random() - 0.5) * 0.003, // Minimal vertical movement
+          z: (Math.random() - 0.5) * 0.003  // Minimal depth movement
+        },
+        twinkleSpeed: 0.02 + Math.random() * 0.03,
+        twinklePhase: Math.random() * Math.PI * 2,
+        baseOpacity: 0.4 + Math.random() * 0.4 // Different base opacities
+      } as StarProperties;
       
       stars.push(star);
       scene.add(star);
@@ -130,10 +146,11 @@ export default function AnimatedDotsBackground({ className = '' }: AnimatedDotsB
 
       // Update star positions and effects
       stars.forEach((star) => {
-        const velocity = (star as any).velocity;
-        const twinkleSpeed = (star as any).twinkleSpeed;
-        const twinklePhase = (star as any).twinklePhase;
-        const baseOpacity = (star as any).baseOpacity;
+        const userData = star.userData as StarProperties;
+        const velocity = userData.velocity;
+        const twinkleSpeed = userData.twinkleSpeed;
+        const twinklePhase = userData.twinklePhase;
+        const baseOpacity = userData.baseOpacity;
         
         // Update position
         star.position.x += velocity.x;
@@ -146,7 +163,7 @@ export default function AnimatedDotsBackground({ className = '' }: AnimatedDotsB
           star.position.y = (Math.random() - 0.5) * 15;
           star.position.z = (Math.random() - 0.5) * 15;
           star.rotation.z = Math.random() * Math.PI * 2;
-          (star as any).twinklePhase = Math.random() * Math.PI * 2; // New twinkle phase
+          userData.twinklePhase = Math.random() * Math.PI * 2; // New twinkle phase
         }
 
         // Twinkling effect
@@ -165,10 +182,10 @@ export default function AnimatedDotsBackground({ className = '' }: AnimatedDotsB
 
     // Handle window resize
     const handleResize = () => {
-      if (!renderer || !containerRef.current) return;
+      if (!renderer || !container) return;
       
-      const width = containerRef.current.clientWidth;
-      const height = containerRef.current.clientHeight;
+      const width = container.clientWidth;
+      const height = container.clientHeight;
       
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
@@ -183,8 +200,8 @@ export default function AnimatedDotsBackground({ className = '' }: AnimatedDotsB
       if (animationIdRef.current) {
         cancelAnimationFrame(animationIdRef.current);
       }
-      if (renderer && containerRef.current) {
-        containerRef.current.removeChild(renderer.domElement);
+      if (renderer && container) {
+        container.removeChild(renderer.domElement);
       }
       window.removeEventListener('resize', handleResize);
       
