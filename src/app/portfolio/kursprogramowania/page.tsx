@@ -3,7 +3,7 @@
 import { useState, useRef } from 'react';
 import { gsap, useGSAP } from '../../../utils/gsap';
 import Image from 'next/image';
-import { FaChevronLeft, FaChevronRight, FaExternalLinkAlt, FaGithub, FaReact, FaNodeJs, FaDatabase } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight, FaReact, FaNodeJs } from 'react-icons/fa';
 import { SiTypescript, SiNextdotjs, SiTailwindcss, SiMongodb } from 'react-icons/si';
 import PageHeader from '@/components/PageHeader';
 

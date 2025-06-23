@@ -182,6 +182,19 @@ export default function Portfolio() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Calculate how many projects are shown at once based on screen size
+  const getProjectsPerView = () => {
+    if (window.innerWidth < 768) return 1; // mobile
+    if (window.innerWidth < 1024) return 2; // tablet
+    return 3; // desktop
+  };
+
+  // Check if navigation should be shown
+  const shouldShowNavigation = () => {
+    const projectsPerView = getProjectsPerView();
+    return filteredProjects.length > projectsPerView;
+  };
+
   const nextProject = useCallback(() => {
     setCurrentProjectIndex((prev) => (prev + 1) % filteredProjects.length);
   }, [filteredProjects.length]);
@@ -361,7 +374,7 @@ export default function Portfolio() {
             </div>
 
             {/* Navigation Buttons */}
-            {filteredProjects.length > 3 && (
+            {shouldShowNavigation() && (
               <>
                 <button
                   onClick={prevProject}

@@ -26,8 +26,8 @@ interface Project {
   icon: string;
   category: string[];
   technologies: string[];
-  demoLink: string;
-  caseStudyLink: string;
+  link: string;
+  previewImage: string;
 }
 
 interface Technology {
@@ -38,6 +38,10 @@ interface Technology {
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentProjectIndex, setCurrentProjectIndex] = useState<number>(0);
+  const categories = ['wszystkie', 'web', 'aplikacje'];
+  const [selectedCategory, setSelectedCategory] = useState('wszystkie');
+  const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     // Ensure elements are visible by default
@@ -48,6 +52,35 @@ export default function Home() {
       }
     });
   }, []);
+
+  // Handle window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Set initial value
+    handleResize();
+
+    // Add event listener
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Calculate how many projects are shown at once based on screen size
+  const getProjectsPerView = () => {
+    if (window.innerWidth < 768) return 1; // mobile
+    if (window.innerWidth < 1024) return 2; // tablet
+    return 3; // desktop
+  };
+
+  // Check if navigation should be shown
+  const shouldShowNavigation = () => {
+    const projectsPerView = getProjectsPerView();
+    return filteredProjects.length > projectsPerView;
+  };
 
   useGSAP(() => {
     // Animacje dla elementów
@@ -72,78 +105,57 @@ export default function Home() {
         toggleActions: 'play none none reverse'
       }
     });
-  }, { scope: containerRef });
+
+    // Animacja dla kart projektów
+    gsap.from('.project-card', {
+      opacity: 0,
+      y: 20,
+      stagger: 0.1,
+      duration: 0.3,
+      ease: 'power2.out'
+    });
+  }, { scope: containerRef, dependencies: [selectedCategory] });
 
   const projects: Project[] = [
     {
-      id: 'banking-app',
-      title: 'Aplikacja Bankowa JavaFX',
-      description: 'Aplikacja bankowa z interfejsem graficznym zbudowana w JavaFX. Zawiera podstawowe funkcjonalności bankowe oraz bazę danych SQLite.',
-      icon: '🏦',
-      category: ['aplikacje', 'desktop'],
-      technologies: ['Java', 'JavaFX', 'SQLite', 'CSS'],
-      demoLink: 'https://github.com/MateuszRL96/AplikacjaBankowaJavaFX1',
-      caseStudyLink: '/portfolio/banking-app'
-    },
-    {
-      id: 'qualification-manager',
-      title: 'Qualification Manager',
-      description: 'System zarządzania i rekomendacji kwalifikacji zawodowych. Wykorzystuje uczenie maszynowe do sugerowania kwalifikacji.',
-      icon: '🎓',
-      category: ['web', 'ai'],
-      technologies: ['Java', 'Spring Boot', 'PostgreSQL', 'Docker'],
-      demoLink: 'https://github.com/MateuszRL96/QualificationManager',
-      caseStudyLink: '/portfolio/qualification-manager'
-    },
-    {
-      id: 'projekt-atomow',
-      title: 'Model Elektronu',
-      description: 'Interaktywny model elektronu stworzony przy użyciu Three.js. Projekt edukacyjny prezentujący wizualizację 3D modelu atomowego.',
-      icon: '⚛️',
-      category: ['web', '3d'],
-      technologies: ['JavaScript', 'Three.js', 'HTML', 'CSS'],
-      demoLink: 'https://github.com/MateuszRL96/ProjektAtomow',
-      caseStudyLink: '/portfolio/projekt-atomow'
-    },
-    {
-      id: 'qualification-recommendation',
-      title: 'Qualification Recommendation',
-      description: 'System rekomendacji kwalifikacji wykorzystujący algorytmy uczenia maszynowego.',
-      icon: '🤖',
-      category: ['ai', 'web'],
-      technologies: ['Python', 'TensorFlow', 'Flask', 'PostgreSQL'],
-      demoLink: 'https://github.com/MateuszRL96/qulificationRecomendation',
-      caseStudyLink: '/portfolio/qualification-recommendation'
-    },
-    {
-      id: 'books-manager',
-      title: 'Books Manager',
-      description: 'Aplikacja do zarządzania kolekcją książek z możliwością kategoryzacji i oceniania.',
-      icon: '📚',
+      id: 'dogtest',
+      title: 'DogTest - Platforma Testowa dla Psów',
+      description: 'Nowoczesna aplikacja webowa do przeprowadzania testów behawioralnych psów. Platforma umożliwia trenerom i właścicielom psów przeprowadzanie standaryzowanych testów, ocenę wyników i śledzenie postępów czworonożnych podopiecznych.',
+      icon: '🐕',
       category: ['web', 'aplikacje'],
-      technologies: ['React', 'Node.js', 'MongoDB', 'Express'],
-      demoLink: 'https://github.com/MateuszRL96/Books',
-      caseStudyLink: '/portfolio/books-manager'
+      technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Node.js', 'MongoDB'],
+      link: '/portfolio/dogtest',
+      previewImage: '/portfolio/dogtest/Zrzut ekranu z 2025-06-22 21-37-24.png'
     },
     {
-      id: 'projekt-fruits',
-      title: 'Fruits Shop',
-      description: 'Sklep internetowy z owocami i warzywami, oferujący system zamówień online.',
-      icon: '🍎',
-      category: ['web', 'e-commerce'],
-      technologies: ['React', 'Redux', 'Node.js', 'MongoDB'],
-      demoLink: 'https://github.com/MateuszRL96/ProjektFruits',
-      caseStudyLink: '/portfolio/projekt-fruits'
+      id: 'consagrico',
+      title: 'Consagrico - Platforma Biznesowa',
+      description: 'Kompleksowa platforma biznesowa oferująca narzędzia do zarządzania projektami, komunikacji zespołowej i analizy danych. Nowoczesny interfejs z zaawansowanymi funkcjonalnościami dla firm.',
+      icon: '🏢',
+      category: ['web', 'aplikacje'],
+      technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Node.js', 'PostgreSQL'],
+      link: '/portfolio/consagrico',
+      previewImage: '/portfolio/consagrico/Zrzut ekranu z 2025-06-22 15-12-40.png'
     },
     {
-      id: 'javafx-calculator',
-      title: 'JavaFX Calculator',
-      description: 'Zaawansowany kalkulator z interfejsem graficznym stworzony w JavaFX.',
-      icon: '🧮',
-      category: ['aplikacje', 'desktop'],
-      technologies: ['Java', 'JavaFX', 'CSS'],
-      demoLink: 'https://github.com/MateuszRL96/JavaFXCalculator',
-      caseStudyLink: '/portfolio/javafx-calculator'
+      id: 'kursprogramowania',
+      title: 'Kurs Programowania Online',
+      description: 'Interaktywna platforma edukacyjna do nauki programowania. Zawiera kursy z różnych języków programowania, ćwiczenia praktyczne i system śledzenia postępów uczniów.',
+      icon: '💻',
+      category: ['web', 'aplikacje'],
+      technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Node.js', 'MongoDB'],
+      link: '/portfolio/kursprogramowania',
+      previewImage: '/portfolio/kursprogramowania/Zrzut ekranu z 2025-06-22 15-06-23.png'
+    },
+    {
+      id: 'wyprowadzaniepsow',
+      title: 'Wyprowadzanie Psów - Platforma Usługowa',
+      description: 'Platforma łącząca właścicieli psów z profesjonalnymi wyprowadzaczami. System rezerwacji, ocen i płatności online. Aplikacja mobilna dla wygodnego dostępu w terenie.',
+      icon: '🦮',
+      category: ['web', 'aplikacje'],
+      technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Node.js', 'PostgreSQL'],
+      link: '/portfolio/wyprowadzaniepsow',
+      previewImage: '/portfolio/wyprowadzaniepsow/Zrzut ekranu z 2025-06-22 15-01-29.png'
     }
   ];
 
@@ -158,12 +170,27 @@ export default function Home() {
     { name: 'Figma', icon: '🎨' }
   ];
 
+  // Filter projects based on selected category
+  useEffect(() => {
+    if (selectedCategory === 'wszystkie') {
+      setFilteredProjects(projects);
+    } else {
+      setFilteredProjects(projects.filter(project => project.category.includes(selectedCategory)));
+    }
+    setCurrentProjectIndex(0);
+  }, [selectedCategory]);
+
+  // Initialize filteredProjects
+  useEffect(() => {
+    setFilteredProjects(projects);
+  }, []);
+
   const nextProject = () => {
-    setCurrentProjectIndex((prev: number) => (prev + 1) % projects.length);
+    setCurrentProjectIndex((prev: number) => (prev + 1) % filteredProjects.length);
   };
 
   const prevProject = () => {
-    setCurrentProjectIndex((prev: number) => (prev - 1 + projects.length) % projects.length);
+    setCurrentProjectIndex((prev: number) => (prev - 1 + filteredProjects.length) % filteredProjects.length);
   };
 
   return (
@@ -268,7 +295,7 @@ export default function Home() {
       </section>
 
       {/* Portfolio Section */}
-      <section className="py-24 bg-gray-100">
+      <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-center mb-4 fade-in text-gray-900">
             Portfolio
@@ -277,49 +304,88 @@ export default function Home() {
             Moje najnowsze projekty i case studies
           </p>
 
+          {/* Filtry */}
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
+                  selectedCategory === category
+                    ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg'
+                    : 'bg-white text-gray-600 hover:bg-blue-50 hover:text-blue-600'
+                }`}
+              >
+                {category.charAt(0).toUpperCase() + category.slice(1)}
+              </button>
+            ))}
+          </div>
+
           <div className="relative">
-            <div className="flex overflow-hidden">
-              <div className="flex transition-transform duration-500" style={{ transform: `translateX(-${currentProjectIndex * 33.333}%)` }}>
-                {projects.map((project) => (
+            <div className="overflow-hidden">
+              <div 
+                className="flex transition-transform duration-500" 
+                style={{ transform: `translateX(-${currentProjectIndex * (isMobile ? 100 : 33.333)}%)` }}
+              >
+                {filteredProjects.map((project, index) => (
                   <div
                     key={project.id}
-                    className="w-1/3 flex-shrink-0 px-4"
+                    className="w-full md:w-1/3 flex-shrink-0 px-4 transition-all duration-500"
+                    style={{
+                      transform: index === currentProjectIndex ? 'scale(1.05)' : 'scale(1)',
+                      zIndex: index === currentProjectIndex ? 10 : 1
+                    }}
                   >
-                    <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:-translate-y-2 transition-all border border-gray-100 group h-full">
-                      <div className="h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                        <div className="text-7xl transform group-hover:scale-110 transition-transform duration-300">
-                          {project.icon}
-                        </div>
+                    <div className="project-card group bg-white rounded-xl shadow-lg hover:shadow-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 relative h-full min-h-[600px]">
+                      <div className="h-36 md:h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center relative overflow-hidden">
+                        <Image
+                          src={project.previewImage}
+                          alt={project.title}
+                          fill
+                          className="object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-600/20"></div>
                       </div>
-                      <div className="p-6">
-                        <h3 className="text-xl font-bold mb-2 text-gray-900">{project.title}</h3>
-                        <p className="text-gray-600 mb-4">{project.description}</p>
-                        <div className="flex flex-wrap gap-2 mb-6">
-                          {project.technologies.map((tech, index) => (
-                            <span
-                              key={index}
-                              className="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm"
-                            >
-                              {tech}
-                            </span>
-                          ))}
+
+                      <div className="p-4 md:p-8 relative h-[calc(100%-9rem)] md:h-[calc(100%-12rem)] flex flex-col">
+                        <div className="flex-grow">
+                          <h3 className="text-xl md:text-2xl font-bold mb-2 md:mb-3 text-gray-900 group-hover:text-blue-600 transition-colors">
+                            {project.title}
+                          </h3>
+                          <p className="text-sm md:text-base text-gray-600 mb-4 md:mb-6">{project.description}</p>
+                          
+                          <div className="flex flex-wrap gap-1 md:gap-2 mb-4 md:mb-6">
+                            {project.technologies.map((tech, index) => (
+                              <span
+                                key={index}
+                                className="bg-blue-50 text-blue-600 px-2 md:px-4 py-1 rounded-full text-xs md:text-sm font-medium group-hover:bg-blue-100 transition-colors"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+
+                          <div className="flex flex-wrap gap-2">
+                            {project.category.map((cat, index) => (
+                              <span
+                                key={index}
+                                className="text-gray-500 text-xs md:text-sm"
+                              >
+                                #{cat}
+                              </span>
+                            ))}
+                          </div>
                         </div>
-                        <div className="flex gap-4">
-                          <a
-                            href={project.demoLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-center py-2 rounded-lg font-medium hover:shadow-lg transition-all"
-                          >
-                            Zobacz projekt
-                          </a>
-                          <Link
-                            href={project.caseStudyLink}
-                            className="flex-1 border-2 border-gray-200 text-gray-600 text-center py-2 rounded-lg font-medium hover:border-blue-500 hover:text-blue-500 transition-all"
-                          >
-                            Szczegóły
-                          </Link>
-                        </div>
+
+                        <a
+                          href={project.link}
+                          className="block w-full bg-gradient-to-r from-blue-500 to-purple-500 text-white text-center py-2 md:py-3 px-4 md:px-6 rounded-lg font-medium 
+                            hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 
+                            relative overflow-hidden group text-sm md:text-base"
+                        >
+                          <span className="relative z-10">Zobacz projekt</span>
+                          <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -328,36 +394,40 @@ export default function Home() {
             </div>
 
             {/* Navigation Buttons */}
-            <button
-              onClick={prevProject}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 bg-white p-3 rounded-full shadow-lg hover:bg-gray-50 transition-colors z-10"
-              aria-label="Poprzedni projekt"
-            >
-              <FaChevronLeft className="w-6 h-6 text-gray-600" />
-            </button>
-            <button
-              onClick={nextProject}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 bg-white p-3 rounded-full shadow-lg hover:bg-gray-50 transition-colors z-10"
-              aria-label="Następny projekt"
-            >
-              <FaChevronRight className="w-6 h-6 text-gray-600" />
-            </button>
-
-            {/* Dots */}
-            <div className="flex justify-center mt-8 gap-2">
-              {projects.map((_, index) => (
+            {shouldShowNavigation() && (
+              <>
                 <button
-                  key={index}
-                  onClick={() => setCurrentProjectIndex(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    currentProjectIndex === index
-                      ? 'bg-blue-500 w-6'
-                      : 'bg-gray-300 hover:bg-gray-400'
-                  }`}
-                  aria-label={`Przejdź do projektu ${index + 1}`}
-                />
-              ))}
-            </div>
+                  onClick={prevProject}
+                  className="absolute left-0 top-1/2 -translate-y-1/2 md:-translate-x-1/2 bg-white p-2 md:p-3 rounded-full shadow-lg hover:bg-gray-50 transition-colors z-10"
+                  aria-label="Poprzedni projekt"
+                >
+                  <FaChevronLeft className="w-4 h-4 md:w-6 md:h-6 text-gray-600" />
+                </button>
+                <button
+                  onClick={nextProject}
+                  className="absolute right-0 top-1/2 -translate-y-1/2 md:translate-x-1/2 bg-white p-2 md:p-3 rounded-full shadow-lg hover:bg-gray-50 transition-colors z-10"
+                  aria-label="Następny projekt"
+                >
+                  <FaChevronRight className="w-4 h-4 md:w-6 md:h-6 text-gray-600" />
+                </button>
+
+                {/* Dots */}
+                <div className="flex justify-center mt-4 md:mt-8 gap-1 md:gap-2">
+                  {filteredProjects.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentProjectIndex(index)}
+                      className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
+                        currentProjectIndex === index
+                          ? 'bg-blue-500 w-4 md:w-6'
+                          : 'bg-gray-300 hover:bg-gray-400'
+                      }`}
+                      aria-label={`Przejdź do projektu ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
           </div>
 
           <div className="text-center mt-12">

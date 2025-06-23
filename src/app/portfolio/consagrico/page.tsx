@@ -3,7 +3,7 @@
 import { useState, useRef } from 'react';
 import { gsap, useGSAP } from '../../../utils/gsap';
 import Image from 'next/image';
-import { FaChevronLeft, FaChevronRight, FaExternalLinkAlt, FaGithub, FaReact, FaNodeJs, FaDatabase } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight, FaReact, FaNodeJs } from 'react-icons/fa';
 import { SiTypescript, SiNextdotjs, SiTailwindcss, SiPostgresql } from 'react-icons/si';
 import PageHeader from '@/components/PageHeader';
 
@@ -201,7 +201,7 @@ export default function ConsagricoProject() {
                 <li>• Node.js z Express.js</li>
                 <li>• PostgreSQL z Prisma ORM</li>
                 <li>• JWT dla autoryzacji</li>
-                <li>• Redis dla cache'owania</li>
+                <li>• Redis dla cache&apos;owania</li>
                 <li>• Jest dla testów jednostkowych</li>
               </ul>
             </div>
@@ -287,7 +287,7 @@ export default function ConsagricoProject() {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></span>
-                  <span>Optymalizacja zapytań i cache'owanie z Redis</span>
+                  <span>Optymalizacja zapytań i cache&apos;owanie z Redis</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></span>
