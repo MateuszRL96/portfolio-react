@@ -71,6 +71,7 @@ export default function Home() {
 
   // Calculate how many projects are shown at once based on screen size
   const getProjectsPerView = () => {
+    if (typeof window === 'undefined') return 3; // Default for SSR
     if (window.innerWidth < 768) return 1; // mobile
     if (window.innerWidth < 1024) return 2; // tablet
     return 3; // desktop
