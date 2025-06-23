@@ -49,10 +49,6 @@ interface StarProperties {
   baseOpacity: number;
 }
 
-interface StarMesh extends THREE.Mesh {
-  userData: StarProperties;
-}
-
 export default function AnimatedDotsBackground({ className = '' }: AnimatedDotsBackgroundProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<THREE.Scene | null>(null);
